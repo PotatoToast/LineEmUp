@@ -38,6 +38,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         board = new Board(numRows, numCols);
+
+        Coin[,] grid = board.GetGrid();
+
+        for (int row = 0; row < grid.GetLength(0); row++)
+        {
+            for (int col = 0; col < grid.GetLength(1); col++)
+            {
+                Debug.Log(grid[row, col]);
+            }
+        }
     }
 
     // Update is called once per frame

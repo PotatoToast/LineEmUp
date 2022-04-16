@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Board
 {
-    private Coin[,] board;
+    private Coin[,] grid;
 
     public Board(int row, int col)
     { 
-        board = new Coin[row, col];
+        grid = new Coin[row, col];
     }
 
 
-    public Coin[,] GetBoard()
+    public Coin[,] GetGrid()
     {
-        return board;
+        return grid;
     }
 
     public void PlaceCoinInCol(int col, GameObject coin)

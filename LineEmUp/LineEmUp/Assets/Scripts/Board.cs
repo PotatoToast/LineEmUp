@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Board
 {
-    private GameObject[,] board;
-
+    private Coin[,] board;
 
     public Board(int row, int col)
     { 
-        board = new GameObject[row, col];
+        board = new Coin[row, col];
     }
 
 
-    public GameObject[,] GetBoard()
+    public Coin[,] GetBoard()
     {
         return board;
     }
@@ -37,4 +36,22 @@ public class Board
     {
         //Write remove coin function here
     }
+
+    #region Abilities
+
+    public void DestroyAdjacent()
+    { 
+
+    }
+
+    public void ProtectAdjacent()
+    {
+        
+    }
+
+    public void PushRow()
+    {
+
+    }
+    #endregion
 }

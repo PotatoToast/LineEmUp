@@ -73,9 +73,9 @@ public class Board
         grid[row, col].isProtected = true;
     }
 
-    public void PushRow(int row, int col, bool left)
+    public void PushRow(int row, int col, bool left, Coin coin)
     {
-        PlaceCoin(row, col);
+        PlaceCoinInCol(col, coin);
 
         if (!left)
         {
@@ -93,10 +93,8 @@ public class Board
             if (col != 8)
             {
                 grid[row, col + 1] = null;
-                //add falling
+                SettleColumn(col);
             }
-
-
         }
 
         else
@@ -115,6 +113,7 @@ public class Board
             if (col != 0)
             {
                 grid[row, col - 1] = null;
+                SettleColumn(col);
             }
         }
     }

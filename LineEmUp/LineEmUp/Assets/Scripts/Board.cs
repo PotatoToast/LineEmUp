@@ -27,9 +27,15 @@ public class Board
     /// </summary>
     /// <param name="row"></param>
     /// <param name="col"></param>
-    public void PlaceCoin(int row, int col)
+    public void PlaceCoin(int row, int col, GameObject coin)
     {
-        //Somebody write function here
+        if (grid[row, col] != null)
+        {
+            Debug.LogError("Cannot place coin at this location. Coin already exists");
+            return;
+        }
+
+        grid[row, col] = coin.GetComponent<Coin>();
     }
 
     public void RemoveCoin(int row, int col)

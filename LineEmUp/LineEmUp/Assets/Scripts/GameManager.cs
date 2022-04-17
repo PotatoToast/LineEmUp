@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class GameManager : MonoBehaviour
     public int numRows = 7;
     public int numCols = 9;
 
+    public int currentPlayer = 1;
+
+    public TextMeshProUGUI playerText;
+
 
     private void Awake()
     {
@@ -48,10 +53,21 @@ public class GameManager : MonoBehaviour
                 Debug.Log(grid[row, col]);
             }
         }
+        playerText.text = "Player: " + currentPlayer;
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void SwitchPlayer(){
+        if (currentPlayer == 1){
+            currentPlayer = 2;
+        }
+        else if(currentPlayer == 2){
+            currentPlayer = 1;
+        }
+        playerText.text = "Player: " + currentPlayer;
     }
 }

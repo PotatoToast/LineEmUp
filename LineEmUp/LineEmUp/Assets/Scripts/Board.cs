@@ -17,9 +17,14 @@ public class Board
         return grid;
     }
 
-    public void PlaceCoinInCol(int col, GameObject coin)
+    public void PlaceCoinInCol(int col, Coin coin)
     {
-        
+        for (int i=0; i < grid.Length-1; i++){
+            if (grid[i+1,col] != null){
+                PlaceCoin(i, col, coin);
+                return;
+            }
+        }
     }
 
     /// <summary>
@@ -27,14 +32,33 @@ public class Board
     /// </summary>
     /// <param name="row"></param>
     /// <param name="col"></param>
-    public void PlaceCoin(int row, int col)
+    public void PlaceCoin(int row, int col, Coin coin)
     {
         //Somebody write function here
+        if (grid[row, col] != null){
+            Debug.Log("Couldn't place coin at [" + row + "][" + col + "]");
+        }
+        else{
+            grid[row,col] = coin;
+        }
     }
 
     public void RemoveCoin(int row, int col)
     {
         //Write remove coin function here
+        if (grid[row, col] != null){
+            grid[row, col] = null;
+            SettleColumn(col);
+        }
+    }
+
+    public void SettleColumn(int col){
+        for (int i=grid.Length; i > 0; i--){    // Check everything above
+            if (grid[i-1, col] != null){        // If there is a coin above
+                grid[i, col] = grid[i-1, col];  // Move it down
+                grid[i-1, col] = null;          
+            }
+        }
     }
 
     #region Abilities

@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             for (int col = 0; col < grid.GetLength(1); col++)
             {
-                Debug.Log(grid[row, col]);
+                // Debug.Log(grid[row, col]);
             }
         }
         playerText.text = "Player: " + currentPlayer;

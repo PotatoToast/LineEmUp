@@ -17,9 +17,14 @@ public class Board
         return grid;
     }
 
-    public void PlaceCoinInCol(int col, GameObject coin)
+    public void PlaceCoinInCol(int col, Coin coin)
     {
-        
+        for (int i=0; i < grid.Length-1; i++){
+            if (grid[i+1,col] != null){
+                PlaceCoin(i, col, coin);
+                return;
+            }
+        }
     }
 
     /// <summary>
@@ -27,20 +32,33 @@ public class Board
     /// </summary>
     /// <param name="row"></param>
     /// <param name="col"></param>
-    public void PlaceCoin(int row, int col, GameObject coin)
+    public void PlaceCoin(int row, int col, Coin coin)
     {
-        if (grid[row, col] != null)
-        {
-            Debug.LogError("Cannot place coin at this location. Coin already exists");
-            return;
+        //Somebody write function here
+        if (grid[row, col] != null){
+            Debug.Log("Couldn't place coin at [" + row + "][" + col + "]");
         }
-
-        grid[row, col] = coin.GetComponent<Coin>();
+        else{
+            grid[row,col] = coin;
+        }
     }
 
     public void RemoveCoin(int row, int col)
     {
         //Write remove coin function here
+        if (grid[row, col] != null){
+            grid[row, col] = null;
+            SettleColumn(col);
+        }
+    }
+
+    public void SettleColumn(int col){
+        for (int i=grid.Length; i > 0; i--){    // Check everything above
+            if (grid[i-1, col] != null){        // If there is a coin above
+                grid[i, col] = grid[i-1, col];  // Move it down
+                grid[i-1, col] = null;          
+            }
+        }
     }
 
     #region Abilities
@@ -50,14 +68,54 @@ public class Board
 
     }
 
-    public void ProtectAdjacent()
+    public void ProtectAdjacent(int row, int col)
     {
-        
+        grid[row, col].isProtected = true;
     }
 
-    public void PushRow()
+    public void PushRow(int row, int col, bool left, Coin coin)
     {
+        PlaceCoinInCol(col, coin);
 
+        if (!left)
+        {
+            int upperBound = 9;
+            for (int horizontalPos = col; horizontalPos < 9; horizontalPos++)
+            {
+                if (grid[row, horizontalPos].isProtected) upperBound = horizontalPos;
+                grid[row, horizontalPos].isProtected = false;
+            }
+
+            for (int horizontalPos = upperBound - 1; horizontalPos > col; horizontalPos++)
+            {
+                grid[row, horizontalPos] = grid[row, horizontalPos - 1];
+            }
+            if (col != 8)
+            {
+                grid[row, col + 1] = null;
+                SettleColumn(col);
+            }
+        }
+
+        else
+        {
+            int lowerBound = 0;
+            for (int horizontalPos = col; lowerBound > 0; horizontalPos++)
+            {
+                if (grid[row, horizontalPos].isProtected) lowerBound = horizontalPos;
+                grid[row, horizontalPos].isProtected = false;
+            }
+
+            for (int horizontalPos = lowerBound; horizontalPos < col; horizontalPos++)
+            {
+                grid[row, horizontalPos] = grid[row, horizontalPos + 1];
+            }
+            if (col != 0)
+            {
+                grid[row, col - 1] = null;
+                SettleColumn(col);
+            }
+        }
     }
     #endregion
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int playerNumer = 1;
+    public int playerNumber = 1;
     public int abilityPoints = 0;
+
 }

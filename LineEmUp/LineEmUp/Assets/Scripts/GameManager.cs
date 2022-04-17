@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public int numCols = 9;
 
     public int currentPlayer = 1;
+    public List<Player> players;
 
     public TextMeshProUGUI playerText;
 

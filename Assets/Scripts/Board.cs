@@ -139,6 +139,74 @@ public class Board
             SettleColumn(i);
         }
     }
+    
+    public bool CheckWin(int playerNum)
+    {
+        //check horizontal win condition
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols - 4 ; j++)
+            {
+                if (grid[i, j] == null || grid[i, j + 1] == null || grid[i, j + 2] == null || grid[i, j + 3] == null || grid[i, j + 4] == null)
+                {
+                    continue; // checks to see if there are any null coins
+                }
+                if (grid[i, j].playerNumber == playerNum && grid[i, j + 1].playerNumber == playerNum && grid[i, j + 2].playerNumber == playerNum && grid[i, j + 3].playerNumber == playerNum && grid[i, j + 4].playerNumber == playerNum)
+                {
+                    return true; // found 5 in a row horizontally
+                }
+            }
+        }
+
+        //check for vertical win condition
+        for (int i = 0; i < numRows - 4; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                if (grid[i, j] == null || grid[i + 1, j] == null || grid[i + 2, j] == null || grid[i + 3, j] == null || grid[i + 4, j] == null)
+                {
+                    continue; // checks to see if there are any null coins
+                }
+                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j].playerNumber == playerNum && grid[i + 2, j].playerNumber == playerNum && grid[i + 3, j].playerNumber == playerNum && grid[i + 4, j].playerNumber == playerNum)
+                {
+                    return true; // found 5 in a row vertically
+                }
+            }
+        }
+
+        //check for diagonal top left to bot right win condition
+        for (int i = 0; i < numRows - 4; i++)
+        {
+            for (int j = 0; j < numCols - 4; j++)
+            {
+                if (grid[i, j] == null || grid[i + 1, j + 1] == null || grid[i + 2, j + 2] == null || grid[i + 3, j + 3] == null || grid[i + 4, j + 4] == null)
+                {
+                    continue; // checks to see if there are any null coins
+                }
+                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j + 1].playerNumber == playerNum && grid[i + 2, j + 2].playerNumber == playerNum && grid[i + 3, j + 3].playerNumber == playerNum && grid[i + 4, j + 4].playerNumber == playerNum)
+                {
+                    return true; // found 5 in a row diagonally top left to bot right
+                }
+            }
+        }
+
+        //check for diagonal top right to bot left win condition
+        for (int i = 0 ; i < numRows - 4; i++)
+        {
+            for (int j = numCols - 1; j > numCols - (numCols - 4) - 1; j--)
+            {
+                if (grid[i, j] == null || grid[i + 1, j - 1] == null || grid[i + 2, j - 2] == null || grid[i + 3, j - 3] == null || grid[i + 4, j - 4] == null)
+                {
+                    continue; // checks to see if there are any null coins
+                }
+                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j - 1].playerNumber == playerNum && grid[i + 2, j - 2].playerNumber == playerNum && grid[i + 3, j - 3].playerNumber == playerNum && grid[i + 4, j - 4].playerNumber == playerNum)
+                {
+                    return true; // found 5 in a row diagonally top right to bot left
+                }
+            }
+        }
+        return false;
+    }
 
     #region Abilities
 

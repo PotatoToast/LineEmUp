@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
             SwitchPlayer();
         }
         board.PrintGrid();
+        if (board.CheckWin(1)) Debug.Log("Player 1 wins");
+        else if (board.CheckWin(2)) Debug.Log("Player 2 wins");
     }
 
     public void SwitchPlayer(){

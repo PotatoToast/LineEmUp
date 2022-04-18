@@ -121,9 +121,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlaceCoinInCol(int col){
-        board.PlaceCoinInCol(col, players[currentPlayer-1].playerCoin);
-        PrintBoard();
-        SwitchPlayer();
+        if (board.PlaceCoinInCol(col, players[currentPlayer-1].playerCoin)){
+            SwitchPlayer();
+        }
+        board.PrintGrid();
     }
 
     public void SwitchPlayer(){

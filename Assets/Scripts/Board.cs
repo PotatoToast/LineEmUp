@@ -62,15 +62,14 @@ public class Board
     /// Last tested : 4/17/2022
     /// Question? Ask (recent updater) : Calvin
     /// Functions correctly? : Yes
-    public void PlaceCoinInCol(int col, Coin coin)
+    public bool PlaceCoinInCol(int col, Coin coin)
     {
         for (int i=0; i < numRows - 1; i++){
             if (grid[i+1,col] != null){
-                PlaceCoin(i, col, coin);
-                return;
+                return PlaceCoin(i, col, coin);
             }
         }
-        PlaceCoin(numRows-1, col, coin);
+        return PlaceCoin(numRows-1, col, coin);
     }
 
     /// <summary>
@@ -78,14 +77,16 @@ public class Board
     /// </summary>
     /// <param name="row"></param>
     /// <param name="col"></param>
-    public void PlaceCoin(int row, int col, Coin coin)
+    public bool PlaceCoin(int row, int col, Coin coin)
     {
         //Somebody write function here
         if (grid[row, col] != null){
             Debug.Log("Couldn't place coin at [" + row + "][" + col + "]");
+            return false;
         }
         else{
             grid[row,col] = coin;
+            return true;
         }
     }
 

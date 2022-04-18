@@ -102,6 +102,30 @@ public class GameManager : MonoBehaviour
     {
     }
 
+    private void PrintBoard(){
+        Coin[,] grid = board.GetGrid();
+        for (int row = 0; row < grid.GetLength(0); row++)
+        {
+            string rowOutput = "";
+            for (int col = 0; col < grid.GetLength(1); col++)
+            {
+                if (grid[row, col] == null){
+                    rowOutput += "0";
+                }
+                else{
+                    rowOutput += grid[row, col].playerNumber;
+                }
+            }
+            Debug.Log(rowOutput);
+        }
+    }
+
+    public void PlaceCoinInCol(int col){
+        board.PlaceCoinInCol(col, players[currentPlayer-1].playerCoin);
+        PrintBoard();
+        SwitchPlayer();
+    }
+
     public void SwitchPlayer(){
         if (currentPlayer == 1){
             currentPlayer = 2;

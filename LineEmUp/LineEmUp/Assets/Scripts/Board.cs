@@ -21,8 +21,8 @@ public class Board
 
     public void PlaceCoinInCol(int col, Coin coin)
     {
-        for (int i=0; i < grid.Length-1; i++){
-            if (grid[i+1,col] != null){
+        for (int i=0; i < grid.GetLength(0); i++){                      // Check from top to bottom
+            if (i == grid.GetLength(0)-1 || grid[i+1,col] != null){     // If i is the last row or there is a coin under it
                 PlaceCoin(i, col, coin);
                 return;
             }
@@ -55,7 +55,7 @@ public class Board
     }
 
     public void SettleColumn(int col){
-        for (int i=grid.Length; i > 0; i--){    // Check everything above
+        for (int i=grid.GetLength(0); i > 0; i--){    // Check everything above
             if (grid[i-1, col] != null){        // If there is a coin above
                 grid[i, col] = grid[i-1, col];  // Move it down
                 grid[i-1, col] = null;          
@@ -65,19 +65,19 @@ public class Board
 
     #region Abilities
 
-    public void DestroyAdjacent()
+    public void DestroyAdjacent(int row, int col)
     { 
         //Not finished XD. The input is suppose to check which coin you click to remove. 
         //It checks if there is a coin adjacent to the one you choose and uses the remove function. 
-        if ( grid[row, col + 1] != null && input.checkObjectClicked != null ) 
+        if ( grid[row, col + 1] != null) //&& input.checkObjectClicked != null ) 
         {
             RemoveCoin(row, col + 1);
         }
-        else if ( grid[row + 1, col] != null && input.checkObjectClicked != null )
+        else if ( grid[row + 1, col] != null)// && input.checkObjectClicked != null )
         {
             RemoveCoin(row + 1, col);
         }
-        else if ( grid[row - 1, col] != null && input.checkObjectClicked != null )
+        else if ( grid[row - 1, col] != null)// && input.checkObjectClicked != null )
         {
             RemoveCoin(row - 1, col);
         }

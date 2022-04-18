@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI playerText;
 
+    public GameObject coinMaster;
 
     private void Awake()
     {
@@ -47,14 +48,53 @@ public class GameManager : MonoBehaviour
 
         Coin[,] grid = board.GetGrid();
 
-        for (int row = 0; row < grid.GetLength(0); row++)
+        int playerNumber = 1;
+        int otherNumber = 2;
+       
+
+        //start testing
+        for (int i = 0; i < grid.GetLength(0); i++)
         {
-            for (int col = 0; col < grid.GetLength(1); col++)
+            for (int j = 0; j < grid.GetLength(1); j++)
             {
-                // Debug.Log(grid[row, col]);
+                if (i % 3 == 0 || j % 5 == 0)
+                {
+                    continue;
+                }
+                //create new gameObject
+                GameObject tempObj = new GameObject();
+                tempObj.transform.position = new Vector3(i, j, 0);
+
+                //Add coin component
+                var tempCoin = tempObj.AddComponent<Coin>();
+                tempCoin.playerNumber = playerNumber;
+
+                //logic for player switching
+                (playerNumber, otherNumber) = (otherNumber, playerNumber);
+                board.PlaceCoin(i, j, tempCoin);
             }
         }
-        playerText.text = "Player: " + currentPlayer;
+
+        board.PrintGrid();
+
+        board.SettleAllColumns();
+
+        board.PrintGrid();
+
+        GameObject t = new GameObject();
+        t.transform.position = new Vector3(0, 0, 0);
+
+        //Add coin component
+        var tc = t.AddComponent<Coin>();
+        tc.playerNumber = 3;
+
+
+        board.PushRow(6, 5, true, tc);
+
+        board.PrintGrid();
+        //end testing
+
+        //playerText.text = "Player: " + currentPlayer;
     }
 
     // Update is called once per frame

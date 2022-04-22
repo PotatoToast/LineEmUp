@@ -38,13 +38,24 @@ public class Board
         {
             for (int j = 0; j < numCols; j++)
             {
+                sb.Append(" ");
                 if (grid[i, j] == null)
                 {
-                    sb.Append('0');
+                    sb.Append("0 ");
+                    // sb.Append(string.Format("{0, 3}", '0'));
                 }
                 else
                 {
                     sb.Append(grid[i, j].playerNumber);
+                    if (grid[i, j].isProtected){
+                        sb.Append("p");
+                        // sb.Append(string.Format("{0, 3}", grid[i, j].playerNumber + "p"));
+                        // sb.Append(string.Format("{0, 3}", 'p'));
+                    }
+                    else{
+                        sb.Append(" ");
+                        // sb.Append(string.Format("{0, 3}", grid[i, j].playerNumber));
+                    }
                 }
                 sb.Append(" | ");
             }

@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
                 //Add coin component
                 var tempCoin = tempObj.AddComponent<Coin>();
                 tempCoin.playerNumber = playerNumber;
+                tempCoin.isProtected = true;
 
                 //logic for player switching
                 (playerNumber, otherNumber) = (otherNumber, playerNumber);

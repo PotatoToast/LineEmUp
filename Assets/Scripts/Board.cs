@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
+
+public enum Direction { left, right, up, down };
 public class Board
 {
     private Coin[,] grid;
@@ -221,9 +223,27 @@ public class Board
 
     #region Abilities
 
-    public void DestroyAdjacent()
-    { 
-
+    public void DestroyAdjacent(int row, int col, Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.left:
+                if (col - 1 < 0) return;
+                RemoveCoin(row, col - 1);
+                break;
+            case Direction.right:
+                if (col + 1 >= numCols) return;
+                RemoveCoin(row, col + 1);
+                break;
+            case Direction.up:
+                if (row - 1 < 0) return;
+                RemoveCoin(row - 1, col);
+                break;
+            case Direction.down:
+                if (row + 1 >= numRows) return;
+                RemoveCoin(row + 1, col);
+                break;
+        }
     }
 
     public void ProtectAdjacent(int row, int col)

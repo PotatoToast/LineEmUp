@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
         int playerNumber = 1;
         int otherNumber = 2;
-       
+        
 
         //start testing
         for (int i = 0; i < grid.GetLength(0); i++)
@@ -91,6 +91,8 @@ public class GameManager : MonoBehaviour
 
 
         board.PushRow(6, 5, true, tc);
+
+        board.DestroyAdjacent(3, 1, Direction.right);
 
         board.PrintGrid();
         //end testing

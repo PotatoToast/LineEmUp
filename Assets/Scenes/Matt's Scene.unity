@@ -1445,8 +1445,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Pos: {x: -25, y: 5, z: -2}
   player2Pos: {x: 25, y: 5, z: -2}
+  middlePos: {x: 0, y: 7.5, z: -25}
   transitionSpeed: 25
-  rotationSpeed: 3
+  rotationSpeed: 4.5
 --- !u!1 &1072544681
 GameObject:
   m_ObjectHideFlags: 0

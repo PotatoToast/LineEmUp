@@ -124,12 +124,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void PlaceCoinInCol(int col){
-        if (board.PlaceCoinInCol(col, players[currentPlayer-1].playerCoin)){
-            SwitchPlayer();
-        }
-        board.PrintGrid();
-        if (board.CheckWin(1)) Debug.Log("Player 1 wins");
-        else if (board.CheckWin(2)) Debug.Log("Player 2 wins");
+        board.PlaceCoinInCol(col, players[currentPlayer-1].playerCoin);
+        PrintBoard();
+        SwitchPlayer();
     }
 
     public void SwitchPlayer(){

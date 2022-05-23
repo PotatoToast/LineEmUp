@@ -8,6 +8,7 @@ public class KeyboardSelector : MonoBehaviour
     public float shift = 3f; // how far over the selector moves
     private GameObject selector;
     public CoinSpawner coinSpawner;
+    public CoinDropper dropper;
 
 
     [SerializeField] private List<GameObject> coinSpawnerLocations;
@@ -16,8 +17,7 @@ public class KeyboardSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+        dropper.InitializePositions();   
     }
     
 

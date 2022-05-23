@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
                 //create new gameObject
                 GameObject tempObj = new GameObject();
                 tempObj.transform.position = new Vector3(i, j, 0);
+                tempObj.transform.parent = coinMaster.transform;
 
                 //Add coin component
                 var tempCoin = tempObj.AddComponent<Coin>();
@@ -138,4 +139,14 @@ public class GameManager : MonoBehaviour
         }
         playerText.text = "Player: " + currentPlayer;
     }
+
+    public void PlaceCoin(GameObject coin, Vector3 pos)
+    { 
+        GameObject obj = Instantiate(coin, pos, Quaternion.identity);
+
+        Coin script = obj.GetComponent<Coin>();
+
+        Debug.Log("PlacedCoin");
+    }
+
 }

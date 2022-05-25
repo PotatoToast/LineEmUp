@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
     public int currentPlayer = 1;
     public List<Player> players;
 
-    public TextMeshProUGUI playerText;
-
     public GameObject coinMaster;
+
+    [SerializeField] private CanvasManager canvasManager;
 
     private void Awake()
     {
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     {
         board = new Board(numRows, numCols);
         board.PrintGrid();
+        canvasManager.UpdateCurrentPlayerText(currentPlayer);
     }
 
     // Update is called once per frame
@@ -132,25 +133,53 @@ public class GameManager : MonoBehaviour
     }
 
     public void SwitchPlayer(){
-        if (currentPlayer == 1){
-            currentPlayer = 2;
-        }
-        else if(currentPlayer == 2){
+
+        currentPlayer++;
+        if (currentPlayer > players.Count)
+        {
             currentPlayer = 1;
         }
-        playerText.text = "Player: " + currentPlayer;
+
+        canvasManager.UpdateCurrentPlayerText(currentPlayer);
+        CheckIfEitherPlayerWin();
     }
 
+    //Function that places coin in both physical and backend boards
     public void PlaceCoin(GameObject coin, Vector3 pos, int colNum)
-    { 
-        GameObject obj = Instantiate(coin, pos, Quaternion.Euler(0, -90, 0));
+    {
+        //Creates physical version of coin
+        GameObject temp = players[currentPlayer-1].coinPrefab;
+        GameObject obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
 
+        //Creates backend version
         Coin myCoin = obj.GetComponent<Coin>();
         myCoin.playerNumber = currentPlayer;
         board.PlaceCoinInCol(colNum, myCoin);
         board.PrintGrid();
 
+        SwitchPlayer();
+
         Debug.Log("PlacedCoin");
     }
+
+    public void CheckIfEitherPlayerWin()
+    {
+        bool playerOneWins = board.CheckWin(1);
+        bool playerTwoWins = board.CheckWin(2);
+
+        if (playerOneWins && playerTwoWins)
+        {
+            canvasManager.DisplayGameResults(-1);
+        }
+        else if (playerOneWins)
+        {
+            canvasManager.DisplayGameResults(1);
+        }
+        else if(playerTwoWins)
+        {
+            canvasManager.DisplayGameResults(2);
+        }
+    }
+
 
 }

@@ -8,4 +8,6 @@ public class Player : MonoBehaviour
     public int abilityPoints = 0;
     public Coin playerCoin;
 
+    public GameObject coinPrefab;
+
 }

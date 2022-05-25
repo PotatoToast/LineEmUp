@@ -781,6 +781,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7720576, y: 0.5242702, z: 14.956069}
   m_Center: {x: -0.44161472, y: 0.47618967, z: -1.4504132}
+--- !u!1001 &1485370978
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267105188531811984, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
+      propertyPath: m_Name
+      value: Coin_Blue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
 --- !u!64 &1611840430
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1032,6 +1089,10 @@ PrefabInstance:
       propertyPath: canvasManager
       value: 
       objectReference: {fileID: 679620151}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: DestroyCoinPSEffect
+      value: 
+      objectReference: {fileID: 4298098756920611894, guid: 3fc8c76dcafb8bc4ab8ef179971d2d54, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: players.Array.data[0]
       value: 

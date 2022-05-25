@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CanvasManager canvasManager;
 
+    [SerializeField] private GameObject DestroyCoinPSEffect;
+
     private void Awake()
     {
         CreateSingleton();
@@ -52,7 +54,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            DestroyCoin(4, 0);
+        }
     }
 
     private void TestingFunction()
@@ -147,19 +152,25 @@ public class GameManager : MonoBehaviour
     //Function that places coin in both physical and backend boards
     public void PlaceCoin(GameObject coin, Vector3 pos, int colNum)
     {
-        //Creates physical version of coin
-        GameObject temp = players[currentPlayer-1].coinPrefab;
-        GameObject obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+        GameObject temp = players[currentPlayer - 1].coinPrefab;
 
         //Creates backend version
-        Coin myCoin = obj.GetComponent<Coin>();
+        Coin myCoin = temp.GetComponent<Coin>();
         myCoin.playerNumber = currentPlayer;
-        board.PlaceCoinInCol(colNum, myCoin);
-        board.PrintGrid();
 
-        SwitchPlayer();
-
-        Debug.Log("PlacedCoin");
+        //if the board allows, create a physical copy)
+        if (board.PlaceCoinInCol(colNum, myCoin))
+        {
+            //Creates physical version of coin
+            GameObject obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+            SwitchPlayer();
+            board.PrintGrid();
+        }
+        else
+        {
+            Debug.Log("Invalid action");
+            //Play invalid action noise here
+        }
     }
 
     public void CheckIfEitherPlayerWin()
@@ -179,6 +190,19 @@ public class GameManager : MonoBehaviour
         {
             canvasManager.DisplayGameResults(2);
         }
+    }
+
+    public void DestroyCoin(int row, int col)
+    {
+        var grid = board.GetGrid();
+        Coin myCoin = grid[row, col];
+        GameObject coinObj = myCoin.gameObject;
+        GameObject psEffect = Instantiate(DestroyCoinPSEffect, coinObj.transform.position, Quaternion.Euler(0, 0, -60));
+
+        psEffect.GetComponent<ParticleSystem>().Emit(1);
+        Destroy(coinObj, 0.76f);
+        Destroy(psEffect, 3f);
+        board.RemoveCoin(row, col);
     }
 
 

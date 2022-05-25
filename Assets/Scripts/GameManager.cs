@@ -45,14 +45,23 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         board = new Board(numRows, numCols);
+        board.PrintGrid();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    private void TestingFunction()
+    {
+        //start testing
+        
         Coin[,] grid = board.GetGrid();
-
         int playerNumber = 1;
         int otherNumber = 2;
-        
 
-        //start testing
         for (int i = 0; i < grid.GetLength(0); i++)
         {
             for (int j = 0; j < grid.GetLength(1); j++)
@@ -97,15 +106,7 @@ public class GameManager : MonoBehaviour
 
         board.PrintGrid();
         //end testing
-
-        //playerText.text = "Player: " + currentPlayer;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     private void PrintBoard(){
         Coin[,] grid = board.GetGrid();
         for (int row = 0; row < grid.GetLength(0); row++)
@@ -140,11 +141,14 @@ public class GameManager : MonoBehaviour
         playerText.text = "Player: " + currentPlayer;
     }
 
-    public void PlaceCoin(GameObject coin, Vector3 pos)
+    public void PlaceCoin(GameObject coin, Vector3 pos, int colNum)
     { 
-        GameObject obj = Instantiate(coin, pos, Quaternion.identity);
+        GameObject obj = Instantiate(coin, pos, Quaternion.Euler(0, -90, 0));
 
-        Coin script = obj.GetComponent<Coin>();
+        Coin myCoin = obj.GetComponent<Coin>();
+        myCoin.playerNumber = currentPlayer;
+        board.PlaceCoinInCol(colNum, myCoin);
+        board.PrintGrid();
 
         Debug.Log("PlacedCoin");
     }

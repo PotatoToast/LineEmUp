@@ -4,7 +4,7 @@ using System.IO;
 using System.Text;
 using UnityEngine;
 
-
+[System.Serializable]
 public enum Direction { left, right, up, down };
 public class Board
 {
@@ -48,15 +48,15 @@ public class Board
                 }
                 else
                 {
-                    sb.Append(grid[i, j].playerNumber);
+                    sb.Append(grid[i, j].GetPlayerNumber());
                     if (grid[i, j].isProtected){
                         sb.Append("p");
-                        // sb.Append(string.Format("{0, 3}", grid[i, j].playerNumber + "p"));
+                        // sb.Append(string.Format("{0, 3}", grid[i, j].GetPlayerNumber() + "p"));
                         // sb.Append(string.Format("{0, 3}", 'p'));
                     }
                     else{
                         sb.Append(" ");
-                        // sb.Append(string.Format("{0, 3}", grid[i, j].playerNumber));
+                        // sb.Append(string.Format("{0, 3}", grid[i, j].GetPlayerNumber()));
                     }
                 }
                 sb.Append(" | ");
@@ -85,6 +85,8 @@ public class Board
         return PlaceCoin(numRows-1, col, coin);
     }
 
+
+
     /// <summary>
     /// Places a coin in the row and column specified
     /// </summary>
@@ -101,6 +103,12 @@ public class Board
             grid[row,col] = coin;
             return true;
         }
+    }
+
+    public bool canPlaceInColumn(int colNum)
+    {
+        if (grid[0, colNum] == null) return true;
+        return false;
     }
 
     public void RemoveCoin(int row, int col)
@@ -164,7 +172,7 @@ public class Board
                 {
                     continue; // checks to see if there are any null coins
                 }
-                if (grid[i, j].playerNumber == playerNum && grid[i, j + 1].playerNumber == playerNum && grid[i, j + 2].playerNumber == playerNum && grid[i, j + 3].playerNumber == playerNum && grid[i, j + 4].playerNumber == playerNum)
+                if (grid[i, j].GetPlayerNumber() == playerNum && grid[i, j + 1].GetPlayerNumber() == playerNum && grid[i, j + 2].GetPlayerNumber() == playerNum && grid[i, j + 3].GetPlayerNumber() == playerNum && grid[i, j + 4].GetPlayerNumber() == playerNum)
                 {
                     return true; // found 5 in a row horizontally
                 }
@@ -180,7 +188,7 @@ public class Board
                 {
                     continue; // checks to see if there are any null coins
                 }
-                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j].playerNumber == playerNum && grid[i + 2, j].playerNumber == playerNum && grid[i + 3, j].playerNumber == playerNum && grid[i + 4, j].playerNumber == playerNum)
+                if (grid[i, j].GetPlayerNumber() == playerNum && grid[i + 1, j].GetPlayerNumber() == playerNum && grid[i + 2, j].GetPlayerNumber() == playerNum && grid[i + 3, j].GetPlayerNumber() == playerNum && grid[i + 4, j].GetPlayerNumber() == playerNum)
                 {
                     return true; // found 5 in a row vertically
                 }
@@ -196,7 +204,7 @@ public class Board
                 {
                     continue; // checks to see if there are any null coins
                 }
-                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j + 1].playerNumber == playerNum && grid[i + 2, j + 2].playerNumber == playerNum && grid[i + 3, j + 3].playerNumber == playerNum && grid[i + 4, j + 4].playerNumber == playerNum)
+                if (grid[i, j].GetPlayerNumber() == playerNum && grid[i + 1, j + 1].GetPlayerNumber() == playerNum && grid[i + 2, j + 2].GetPlayerNumber() == playerNum && grid[i + 3, j + 3].GetPlayerNumber() == playerNum && grid[i + 4, j + 4].GetPlayerNumber() == playerNum)
                 {
                     return true; // found 5 in a row diagonally top left to bot right
                 }
@@ -212,7 +220,7 @@ public class Board
                 {
                     continue; // checks to see if there are any null coins
                 }
-                if (grid[i, j].playerNumber == playerNum && grid[i + 1, j - 1].playerNumber == playerNum && grid[i + 2, j - 2].playerNumber == playerNum && grid[i + 3, j - 3].playerNumber == playerNum && grid[i + 4, j - 4].playerNumber == playerNum)
+                if (grid[i, j].GetPlayerNumber() == playerNum && grid[i + 1, j - 1].GetPlayerNumber() == playerNum && grid[i + 2, j - 2].GetPlayerNumber() == playerNum && grid[i + 3, j - 3].GetPlayerNumber() == playerNum && grid[i + 4, j - 4].GetPlayerNumber() == playerNum)
                 {
                     return true; // found 5 in a row diagonally top right to bot left
                 }

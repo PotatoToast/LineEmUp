@@ -31,12 +31,19 @@ public class GameManager : MonoBehaviour
 
     public int currentPlayer = 1;
     public List<Player> players;
+    public GameObject coinPrefab;
 
     public GameObject coinMaster;
+
+    public GameObject columnSelector;
 
     [SerializeField] private CanvasManager canvasManager;
 
     [SerializeField] private GameObject DestroyCoinPSEffect;
+
+    GameObject obj;
+    Coin newCoin;
+    bool canSelect = true;
 
     private void Awake()
     {
@@ -54,6 +61,30 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Coin[,] grid = board.GetGrid();
+
+        if (obj != null && obj.GetComponent<Rigidbody>().velocity.y > -0.05 && canSelect)
+        {
+            columnSelector.transform.GetChild(0).gameObject.SetActive(false);
+            columnSelector.transform.GetChild(1).gameObject.SetActive(false);
+            columnSelector.transform.GetChild(2).gameObject.SetActive(false);
+            //move column selector ui and only show available buttons
+            columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
+
+            if(FindGridColLocation() > 0 && grid[FindGridRowLocation(),FindGridColLocation() - 1] != null)
+            {
+                columnSelector.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            if (FindGridRowLocation() < numRows - 1 && grid[FindGridRowLocation() + 1, FindGridColLocation()] != null)
+            {
+                columnSelector.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            if (FindGridColLocation() < numCols - 1 && grid[FindGridRowLocation(), FindGridColLocation() + 1] != null)
+            {
+                columnSelector.transform.GetChild(2).gameObject.SetActive(true);
+            }
+        }
+
         if(Input.GetKeyDown(KeyCode.T))
         {
             DestroyCoin(4, 0);
@@ -83,7 +114,7 @@ public class GameManager : MonoBehaviour
 
                 //Add coin component
                 var tempCoin = tempObj.AddComponent<Coin>();
-                tempCoin.playerNumber = playerNumber;
+                tempCoin.ChangePlayerNumber(playerNumber);
                 tempCoin.isProtected = true;
 
                 //logic for player switching
@@ -103,7 +134,7 @@ public class GameManager : MonoBehaviour
 
         //Add coin component
         var tc = t.AddComponent<Coin>();
-        tc.playerNumber = 3;
+        //tc.ChangePlayerNumber = 3;
 
 
         board.PushRow(6, 5, true, tc);
@@ -124,7 +155,7 @@ public class GameManager : MonoBehaviour
                     rowOutput += "0";
                 }
                 else{
-                    rowOutput += grid[row, col].playerNumber;
+                    rowOutput += grid[row, col].GetPlayerNumber();
                 }
             }
             Debug.Log(rowOutput);
@@ -147,22 +178,33 @@ public class GameManager : MonoBehaviour
 
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
         CheckIfEitherPlayerWin();
+        canSelect = true;
     }
 
     //Function that places coin in both physical and backend boards
+
+   
     public void PlaceCoin(GameObject coin, Vector3 pos, int colNum)
     {
-        GameObject temp = players[currentPlayer - 1].coinPrefab;
-
-        //Creates backend version
-        Coin myCoin = temp.GetComponent<Coin>();
-        myCoin.playerNumber = currentPlayer;
+        GameObject temp = coinPrefab;
 
         //if the board allows, create a physical copy)
-        if (board.PlaceCoinInCol(colNum, myCoin))
+        if (board.canPlaceInColumn(colNum))
         {
             //Creates physical version of coin
-            GameObject obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+            
+            obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+            newCoin = obj.GetComponent<Coin>();
+            newCoin.ChangePlayerNumber(currentPlayer);
+
+            obj.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
+
+
+
+
+            //Creates backend version
+            board.PlaceCoinInCol(colNum, newCoin);
+            
             SwitchPlayer();
             board.PrintGrid();
         }
@@ -172,6 +214,7 @@ public class GameManager : MonoBehaviour
             //Play invalid action noise here
         }
     }
+
 
     public void CheckIfEitherPlayerWin()
     {
@@ -199,11 +242,61 @@ public class GameManager : MonoBehaviour
         GameObject coinObj = myCoin.gameObject;
         GameObject psEffect = Instantiate(DestroyCoinPSEffect, coinObj.transform.position, Quaternion.Euler(0, 0, -60));
 
-        psEffect.GetComponent<ParticleSystem>().Emit(1);
+        //psEffect.GetComponent<ParticleSystem>().Emit(1);
         Destroy(coinObj, 0.76f);
         Destroy(psEffect, 3f);
         board.RemoveCoin(row, col);
     }
+        
+    public void ButtonDestroyCoin(int input)
+    {
+        //left
+        if (input == -1) 
+        {
+            DestroyCoin(FindGridRowLocation(), FindGridColLocation() - 1);   
+        }
 
+        //bottom
+        else if (input == 0) 
+        {
+            DestroyCoin(FindGridRowLocation() + 1, FindGridColLocation());
+        }
+
+        //right
+        else if (input == 1) 
+        {
+            DestroyCoin(FindGridRowLocation(), FindGridColLocation() + 1);
+        }
+        columnSelector.transform.GetChild(0).gameObject.SetActive(false);
+        columnSelector.transform.GetChild(1).gameObject.SetActive(false);
+        columnSelector.transform.GetChild(2).gameObject.SetActive(false);
+        canSelect = false;
+    }
+
+    public int FindGridRowLocation()
+    {
+        Coin[,] grid = board.GetGrid();
+        for (int i = 0; i < numRows; ++i)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                if (grid[i, j] == newCoin) return i;
+            }
+        }
+        return -1;
+    }
+
+    public int FindGridColLocation()
+    {
+        Coin[,] grid = board.GetGrid();
+        for (int i = 0; i < numRows; ++i)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                if (grid[i, j] == newCoin) return j;
+            }
+        }
+        return -1;
+    }
 
 }

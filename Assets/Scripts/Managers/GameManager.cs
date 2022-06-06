@@ -31,7 +31,10 @@ public class GameManager : MonoBehaviour
 
     public int currentPlayer = 1;
     public List<Player> players;
+
     public GameObject coinPrefab;
+    public GameObject coinDestroyPrefab;
+    public GameObject coinProtectPrefab;
 
     public GameObject coinMaster;
 
@@ -41,9 +44,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject DestroyCoinPSEffect;
 
-    GameObject obj;
+    GameObject recentCoin;
     Coin newCoin;
-    bool canSelect = true;
+    bool canSelect = false;
+    public bool canUseAbility = false; //waits until a player uses their ability before allowing more coins to be placed
 
     private void Awake()
     {
@@ -63,26 +67,35 @@ public class GameManager : MonoBehaviour
     {
         Coin[,] grid = board.GetGrid();
 
-        if (obj != null && obj.GetComponent<Rigidbody>().velocity.y > -0.05 && canSelect)
+        if (recentCoin != null && recentCoin.GetComponent<Coin>().isSpecialCoin && recentCoin.GetComponent<Rigidbody>().velocity.y > -0.05 && canSelect)
         {
+            
+
+            /*
             columnSelector.transform.GetChild(0).gameObject.SetActive(false);
             columnSelector.transform.GetChild(1).gameObject.SetActive(false);
             columnSelector.transform.GetChild(2).gameObject.SetActive(false);
+            */
+
             //move column selector ui and only show available buttons
             columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
 
             if(FindGridColLocation() > 0 && grid[FindGridRowLocation(),FindGridColLocation() - 1] != null)
             {
-                columnSelector.transform.GetChild(0).gameObject.SetActive(true);
+                recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(true);
+                //columnSelector.transform.GetChild(0).gameObject.SetActive(true);
             }
             if (FindGridRowLocation() < numRows - 1 && grid[FindGridRowLocation() + 1, FindGridColLocation()] != null)
             {
-                columnSelector.transform.GetChild(1).gameObject.SetActive(true);
+                recentCoin.transform.GetChild(8).GetChild(1).gameObject.SetActive(true);
+                //columnSelector.transform.GetChild(1).gameObject.SetActive(true);
             }
             if (FindGridColLocation() < numCols - 1 && grid[FindGridRowLocation(), FindGridColLocation() + 1] != null)
             {
-                columnSelector.transform.GetChild(2).gameObject.SetActive(true);
+                recentCoin.transform.GetChild(8).GetChild(2).gameObject.SetActive(true);
+                //columnSelector.transform.GetChild(2).gameObject.SetActive(true);
             }
+
         }
 
         if(Input.GetKeyDown(KeyCode.T))
@@ -189,15 +202,15 @@ public class GameManager : MonoBehaviour
         GameObject temp = coinPrefab;
 
         //if the board allows, create a physical copy)
-        if (board.canPlaceInColumn(colNum))
+        if (board.canPlaceInColumn(colNum) && !canUseAbility)
         {
             //Creates physical version of coin
             
-            obj = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
-            newCoin = obj.GetComponent<Coin>();
+            recentCoin = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+            newCoin = recentCoin.GetComponent<Coin>();
             newCoin.ChangePlayerNumber(currentPlayer);
 
-            obj.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
+            recentCoin.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
 
 
 
@@ -212,6 +225,25 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Invalid action");
             //Play invalid action noise here
+        }
+        if (temp.GetComponent<Coin>().isSpecialCoin == true) //if a player placed a special coin
+        {
+            var grid = board.GetGrid();
+
+            //if the player is able to choose a direction for special coin ability
+
+            if (FindGridColLocation() > 0 && grid[FindGridRowLocation(), FindGridColLocation() - 1] != null)
+            {
+                canUseAbility = true;
+            }
+            else if (FindGridRowLocation() < numRows - 1 && grid[FindGridRowLocation() + 1, FindGridColLocation()] != null)
+            {
+                canUseAbility = true;
+            }
+            else if (FindGridColLocation() < numCols - 1 && grid[FindGridRowLocation(), FindGridColLocation() + 1] != null)
+            {
+                canUseAbility = true;
+            }
         }
     }
 
@@ -242,6 +274,15 @@ public class GameManager : MonoBehaviour
         GameObject coinObj = myCoin.gameObject;
         GameObject psEffect = Instantiate(DestroyCoinPSEffect, coinObj.transform.position, Quaternion.Euler(0, 0, -60));
 
+
+        //check to see if the targeted coin is protected
+        if (grid[row, col].isProtected)
+        {
+            grid[row, col].isProtected = false;
+            Destroy(psEffect, 3f);
+            return;
+        }
+
         //psEffect.GetComponent<ParticleSystem>().Emit(1);
         Destroy(coinObj, 0.76f);
         Destroy(psEffect, 3f);
@@ -267,10 +308,52 @@ public class GameManager : MonoBehaviour
         {
             DestroyCoin(FindGridRowLocation(), FindGridColLocation() + 1);
         }
-        columnSelector.transform.GetChild(0).gameObject.SetActive(false);
-        columnSelector.transform.GetChild(1).gameObject.SetActive(false);
-        columnSelector.transform.GetChild(2).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(1).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(2).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(0).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(1).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(2).gameObject.SetActive(false);
         canSelect = false;
+        canUseAbility = false;
+    }
+
+    public void ButtonProtectCoin(int input)
+    {
+        //left
+        if (input == -1)
+        {
+            ProtectCoin(FindGridRowLocation(), FindGridColLocation() - 1);
+        }
+
+        //bottom
+        else if (input == 0)
+        {
+            ProtectCoin(FindGridRowLocation() + 1, FindGridColLocation());
+        }
+
+        //right
+        else if (input == 1)
+        {
+            ProtectCoin(FindGridRowLocation(), FindGridColLocation() + 1);
+        }
+        recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(1).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(2).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(0).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(1).gameObject.SetActive(false);
+        //columnSelector.transform.GetChild(2).gameObject.SetActive(false);
+        canSelect = false;
+        canUseAbility = false;
+    }
+
+    public void ProtectCoin(int row, int col)
+    {
+        var grid = board.GetGrid();
+        Coin myCoin = grid[row, col];
+        GameObject coinObj = myCoin.gameObject;
+
+        board.ProtectAdjacent(row, col);
     }
 
     public int FindGridRowLocation()

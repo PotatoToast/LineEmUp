@@ -285,7 +285,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &518121839
 PrefabInstance:
@@ -529,7 +529,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1926659472568611803, guid: 51988eb7982da9842a17f362f392af58, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1926659472568611803, guid: 51988eb7982da9842a17f362f392af58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -797,63 +797,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7720576, y: 0.5242702, z: 14.956069}
   m_Center: {x: -0.44161472, y: 0.47618967, z: -1.4504132}
---- !u!1001 &1485370978
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 3493699447347113002, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4267105188531811984, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
-      propertyPath: m_Name
-      value: Coin_Blue
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bbd8b8e42a440cf49837428f1d3e5cf5, type: 3}
 --- !u!64 &1611840430
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1100,11 +1043,15 @@ PrefabInstance:
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: coinPrefab
       value: 
-      objectReference: {fileID: 4267105188531811984, guid: e8e8f287e73fd644e8b7babcf517cb8d, type: 3}
+      objectReference: {fileID: 4267105188531811984, guid: 052e96e027da68d439d8694004333f76, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: playerText
       value: 
       objectReference: {fileID: 1627571238}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: coinDestroy
+      value: 
+      objectReference: {fileID: 4267105188531811984, guid: bf1242ab6e5a0bb43a795952ec35c195, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: canvasManager
       value: 
@@ -1113,6 +1060,14 @@ PrefabInstance:
       propertyPath: columnSelector
       value: 
       objectReference: {fileID: 147714264}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: coinDestroyPrefab
+      value: 
+      objectReference: {fileID: 4267105188531811984, guid: bf1242ab6e5a0bb43a795952ec35c195, type: 3}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: coinProtectPrefab
+      value: 
+      objectReference: {fileID: 4267105188531811984, guid: 052e96e027da68d439d8694004333f76, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: DestroyCoinPSEffect
       value: 
@@ -1325,7 +1280,7 @@ Transform:
   - {fileID: 3986724814790592057}
   - {fileID: 1282479999}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832149484123537064
 GameObject:
@@ -1980,6 +1935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ColumnSelector
       objectReference: {fileID: 0}
+    - target: {fileID: 5071066358088613344, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5071066358088613347, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1994,7 +1953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358088613348, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358088613348, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_AnchorMax.x

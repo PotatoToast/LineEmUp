@@ -10,6 +10,8 @@ public class Coin : MonoBehaviour
     public Material blueMaterial;
     public Material yellowMaterial;
 
+    public bool isSpecialCoin;
+
     public void ChangePlayerNumber(int _playerNumber)
     {
         var meshrenderers = gameObject.GetComponentsInChildren<MeshRenderer>();
@@ -35,5 +37,17 @@ public class Coin : MonoBehaviour
     public int GetPlayerNumber()
     {
         return playerNumber;
+    }
+
+    public void ButtonDestroyCoinUI(int input)
+    {
+        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        gm.ButtonDestroyCoin(input);
+    }
+
+    public void ButtonProtectCoinUI(int input)
+    {
+        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        gm.ButtonProtectCoin(input);
     }
 }

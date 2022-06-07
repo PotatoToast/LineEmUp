@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject coinDestroyPrefab;
     public GameObject coinProtectPrefab;
+    public GameObject coinPushPrefab;
 
     public GameObject coinMaster;
 
@@ -236,7 +237,7 @@ public class GameManager : MonoBehaviour
             {
                 canUseAbility = true;
             }
-            else if (FindGridRowLocation() < numRows - 1 && grid[FindGridRowLocation() + 1, FindGridColLocation()] != null)
+            else if (!recentCoin.GetComponent<Coin>().isPush && FindGridRowLocation() < numRows - 1 && grid[FindGridRowLocation() + 1, FindGridColLocation()] != null) //only checks below if coin is destroy or protect
             {
                 canUseAbility = true;
             }
@@ -347,6 +348,23 @@ public class GameManager : MonoBehaviour
         canUseAbility = false;
     }
 
+    public void ButtonPushCoin(int input)
+    {
+        if (input == -1)
+        {
+            PushCoin(FindGridRowLocation(), FindGridColLocation(), true, recentCoin.GetComponent<Coin>());
+        }
+        else if (input == 1)
+        {
+            PushCoin(FindGridRowLocation(), FindGridColLocation(), false, recentCoin.GetComponent<Coin>());
+        }
+        recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(1).gameObject.SetActive(false);
+        recentCoin.transform.GetChild(8).GetChild(2).gameObject.SetActive(false);
+        canSelect = false;
+        canUseAbility = false;
+    }
+
     public void ProtectCoin(int row, int col)
     {
         var grid = board.GetGrid();
@@ -354,6 +372,52 @@ public class GameManager : MonoBehaviour
         GameObject coinObj = myCoin.gameObject;
 
         board.ProtectAdjacent(row, col);
+    }
+
+    public void PushCoin(int row, int col, bool pushLeft, Coin coin)
+    {
+        var grid = board.GetGrid();
+
+        if (pushLeft) 
+        {
+            for (int i = 0; i < col; i++)
+            {
+                if (grid[row,i] != null && grid[row, i + 1] != null)
+                {
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, -1.65f);
+                }
+            }
+            
+            if (grid[row, 0] != null)
+            {
+                Destroy(grid[row, 0].gameObject);
+            }
+            
+        }
+
+        else if (!pushLeft)
+        {
+
+            for (int i = numCols - 1; i > col; i--)
+            {
+                if (grid[row, i] != null && grid[row, i - 1] != null)
+                {
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, +1.65f);
+                }
+            }
+
+            if (grid[row, numCols - 1] != null)
+            {
+                Destroy(grid[row, numCols - 1].gameObject);
+            }
+        }
+
+        board.PushRow(row,col,pushLeft, coin);
+    }
+
+    public void ShiftColumns(int row, int col)
+    {
+
     }
 
     public int FindGridRowLocation()

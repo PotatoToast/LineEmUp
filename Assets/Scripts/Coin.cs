@@ -11,6 +11,7 @@ public class Coin : MonoBehaviour
     public Material yellowMaterial;
 
     public bool isSpecialCoin;
+    public bool isPush;
 
     public void ChangePlayerNumber(int _playerNumber)
     {
@@ -49,5 +50,11 @@ public class Coin : MonoBehaviour
     {
         GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
         gm.ButtonProtectCoin(input);
+    }
+
+    public void ButtonPushCoinUI(int input)
+    {
+        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        gm.ButtonPushCoin(input);
     }
 }

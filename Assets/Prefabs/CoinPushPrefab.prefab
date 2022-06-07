@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 2795953297443305730}
   - component: {fileID: 2861948806976533463}
   m_Layer: 0
-  m_Name: CoinProtectPrefab
+  m_Name: CoinPushPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   blueMaterial: {fileID: 2100000, guid: 7e8fb03797d21d64585b38a417c02c5c, type: 2}
   yellowMaterial: {fileID: 2100000, guid: 2c7a9a080e86f244f8041385e408cfa6, type: 2}
   isSpecialCoin: 1
+  isPush: 1
 --- !u!65 &2795953297443305730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -744,10 +745,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5071066357730603388, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_Name
-      value: BottomProtect
+      value: BottomPush
       objectReference: {fileID: 0}
     - target: {fileID: 5071066357730603388, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071066357730603390, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5071066357730603390, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
@@ -789,6 +794,10 @@ PrefabInstance:
     - target: {fileID: 5071066357730603390, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071066357730603391, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358088613344, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_Name
@@ -896,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358222455084, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_Name
-      value: RightProtect
+      value: RightPush
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358222455084, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_IsActive
@@ -908,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 6992827283211909202}
     - target: {fileID: 5071066358222455086, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonProtectCoinUI
+      value: ButtonPushCoinUI
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358222455086, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -918,9 +927,13 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5071066358265753405, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5071066358274891707, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_Name
-      value: LeftProtect
+      value: LeftPush
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358274891707, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_IsActive
@@ -948,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358274891709, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ButtonProtectCoinUI
+      value: ButtonPushCoinUI
       objectReference: {fileID: 0}
     - target: {fileID: 5071066358274891709, guid: d643a4c00db33de468c573cfff9ca074, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

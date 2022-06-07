@@ -3378,14 +3378,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1816649935}
-  m_LocalRotation: {x: 0.04018805, y: 0.68096787, z: -0.03747596, w: 0.7302488}
-  m_LocalPosition: {x: -20.21, y: 3.3, z: 30.009998}
+  m_LocalRotation: {x: 0.038855672, y: 0.7060384, z: -0.038855672, w: 0.7060384}
+  m_LocalPosition: {x: -20.55, y: 3.3, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4501261}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 6.3, y: 86, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.3, y: 90, z: 0}
 --- !u!1 &1819833828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4012,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 973875834}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

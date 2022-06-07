@@ -1043,7 +1043,7 @@ PrefabInstance:
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: coinPrefab
       value: 
-      objectReference: {fileID: 4267105188531811984, guid: 052e96e027da68d439d8694004333f76, type: 3}
+      objectReference: {fileID: 4267105188531811984, guid: a81891013888bc743ad45b4308a64948, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: playerText
       value: 
@@ -1056,6 +1056,10 @@ PrefabInstance:
       propertyPath: canvasManager
       value: 
       objectReference: {fileID: 679620151}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: coinPushPrefab
+      value: 
+      objectReference: {fileID: 4267105188531811984, guid: a81891013888bc743ad45b4308a64948, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: columnSelector
       value: 

@@ -392,7 +392,9 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(grid[row, 0].gameObject);
             }
-            
+
+            board.PushRow(row, col, pushLeft, coin);
+
         }
 
         else if (!pushLeft)
@@ -410,14 +412,9 @@ public class GameManager : MonoBehaviour
             {
                 Destroy(grid[row, numCols - 1].gameObject);
             }
+
+            board.PushRow(row, col, !pushLeft, coin);
         }
-
-        board.PushRow(row,col,pushLeft, coin);
-    }
-
-    public void ShiftColumns(int row, int col)
-    {
-
     }
 
     public int FindGridRowLocation()

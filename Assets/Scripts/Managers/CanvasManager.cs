@@ -5,6 +5,10 @@ using TMPro;
 
 public class CanvasManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI player1Points;
+    [SerializeField] private TextMeshProUGUI player2Points;
+
+
     public TextMeshProUGUI playerText;
     public TextMeshProUGUI winText;
 
@@ -17,6 +21,20 @@ public class CanvasManager : MonoBehaviour
     public void UpdateCurrentPlayerText(int playerNum)
     {
         playerText.text = "Player: " + playerNum;
+    }
+
+    public void UpdatePlayerAbilityPoints(int playerNum, int newPoints){
+        switch(playerNum){
+            case 1:
+                player1Points.text = "Player1: " + newPoints;
+                break;
+            case 2:
+                player2Points.text = "Player2: " + newPoints;
+                break;
+            default:
+                Debug.Log("player " + playerNum + " not found");
+                break;
+        }
     }
 
     public void DisplayGameResults(int playerNum)

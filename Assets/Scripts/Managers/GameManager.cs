@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
     {
         board = new Board(numRows, numCols);
         board.PrintGrid();
+        canvasManager.UpdatePlayerAbilityPoints(1, 0);
+        canvasManager.UpdatePlayerAbilityPoints(2, 0);
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
     }
 
@@ -190,6 +192,10 @@ public class GameManager : MonoBehaviour
             currentPlayer = 1;
         }
 
+        Player nextPlayer = players[currentPlayer - 1];
+        nextPlayer.IncreaseAbilityPoints(1);
+
+        canvasManager.UpdatePlayerAbilityPoints(currentPlayer, nextPlayer.abilityPoints);
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
         CheckIfEitherPlayerWin();
         canSelect = true;

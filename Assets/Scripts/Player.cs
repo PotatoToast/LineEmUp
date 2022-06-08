@@ -9,5 +9,9 @@ public class Player : MonoBehaviour
     public Coin playerCoin;
 
     public GameObject coinPrefab;
+    
+    public void IncreaseAbilityPoints(int increase){
+        abilityPoints += increase;
+    }
 
 }

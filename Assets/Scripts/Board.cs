@@ -276,35 +276,41 @@ public class Board
 
         if (!left)
         {
+            endingCol = numCols - 1;
             for (int horizontalPos = col; horizontalPos < numCols; horizontalPos++)
             {
-                if (grid[row, horizontalPos] == null || grid[row, horizontalPos].isProtected)
+                if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
                 {
-                    if (grid[row, horizontalPos].isProtected)
-                    {
-                        grid[row, horizontalPos].isProtected = false;
-                    }
+                    grid[row, horizontalPos].isProtected = false;
+                    endingCol = horizontalPos - 1;
+                    break;
+                }
+
+                if (grid[row, horizontalPos] == null)
+                {
                     endingCol = horizontalPos;
                     break;
                 }    
             }
-            endingCol = numCols - 1;
         }
         else
         {
+            endingCol = 0;
             for (int horizontalPos = col; horizontalPos >= 0; horizontalPos--)
             {
-                if (grid[row, horizontalPos] == null || grid[row, horizontalPos].isProtected)
+                if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
                 {
-                    if (grid[row, horizontalPos].isProtected)
-                    {
-                        grid[row, horizontalPos].isProtected = false;
-                    }
+                    grid[row, horizontalPos].isProtected = false;
+                    endingCol = horizontalPos + 1;
+                    break;
+                }
+
+                if (grid[row, horizontalPos] == null)
+                {
                     endingCol = horizontalPos;
                     break;
                 }
             }
-            endingCol = 0;
         }
 
         if (!left)

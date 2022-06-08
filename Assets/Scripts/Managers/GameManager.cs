@@ -45,7 +45,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject DestroyCoinPSEffect;
 
-    [SerializeField] private List<GameObject> columnLocations;
+
+    #region StateMachine Stuff
+    private enum State
+    {
+        Wait, PlaceCoin, ChooseDirection, IdleForAnim
+    }
+
+    private State currState = State.Wait;
+
+    #endregion
 
     GameObject recentCoin;
     Coin newCoin;
@@ -72,8 +81,6 @@ public class GameManager : MonoBehaviour
 
         if (recentCoin != null && recentCoin.GetComponent<Coin>().isSpecialCoin && recentCoin.GetComponent<Rigidbody>().velocity.y > -0.05 && canSelect)
         {
-            
-
             /*
             columnSelector.transform.GetChild(0).gameObject.SetActive(false);
             columnSelector.transform.GetChild(1).gameObject.SetActive(false);
@@ -81,9 +88,9 @@ public class GameManager : MonoBehaviour
             */
 
             //move column selector ui and only show available buttons
-            columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
+            //columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
 
-            if(FindGridColLocation() > 0 && grid[FindGridRowLocation(),FindGridColLocation() - 1] != null)
+            if (FindGridColLocation() > 0 && grid[FindGridRowLocation(), FindGridColLocation() - 1] != null)
             {
                 recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(true);
                 //columnSelector.transform.GetChild(0).gameObject.SetActive(true);
@@ -101,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             DestroyCoin(4, 0);
         }
@@ -110,7 +117,7 @@ public class GameManager : MonoBehaviour
     private void TestingFunction()
     {
         //start testing
-        
+
         Coin[,] grid = board.GetGrid();
         int playerNumber = 1;
         int otherNumber = 2;
@@ -160,6 +167,26 @@ public class GameManager : MonoBehaviour
         board.PrintGrid();
         //end testing
     }
+
+
+    void DoStateMachine()
+    {
+        switch (currState)
+        {
+            case State.Wait:
+                break;
+            case State.PlaceCoin:
+                break;
+            case State.ChooseDirection:
+                break;
+            case State.IdleForAnim:
+                break;
+            default:
+                break;
+        }
+    }
+
+
     private void PrintBoard(){
         Coin[,] grid = board.GetGrid();
         for (int row = 0; row < grid.GetLength(0); row++)
@@ -214,9 +241,6 @@ public class GameManager : MonoBehaviour
             newCoin.ChangePlayerNumber(currentPlayer);
 
             recentCoin.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
-
-
-
 
             //Creates backend version
             board.PlaceCoinInCol(colNum, newCoin);
@@ -380,46 +404,44 @@ public class GameManager : MonoBehaviour
     {
         var grid = board.GetGrid();
 
-            if (pushLeft)
+        if (pushLeft) 
+        {
+            for (int i = 0; i < col; i++)
             {
-                for (int i = 1; i < col; i++)
+                if (grid[row,i] != null && grid[row, i + 1] != null)
                 {
-                    if (grid[row, i] != null && grid[row, i + 1] != null)
-                    {
-                        Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i - 1].transform.position.z);
-                        grid[row, i].gameObject.transform.position = newPos;
-                    }
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, -1.65f);
                 }
-
-                if (grid[row, 0] != null)
-                {
-                    Destroy(grid[row, 0].gameObject);
-                }
-
-                board.PushRow(row, col, pushLeft, coin);
+            }
+            
+            if (grid[row, 0] != null)
+            {
+                Destroy(grid[row, 0].gameObject);
             }
 
-            else if (!pushLeft)
+            board.PushRow(row, col, pushLeft, coin);
+        }
+
+        else if (!pushLeft)
+        {
+
+            for (int i = numCols - 1; i > col; i--)
             {
-
-                for (int i = numCols - 2; i > col; i--)
+                if (grid[row, i] != null && grid[row, i - 1] != null)
                 {
-                    if (grid[row, i] != null && grid[row, i - 1] != null)
-                    {
-                        Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i + 1].transform.position.z);
-                        grid[row, i].gameObject.transform.position = newPos;
-                    }
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, +1.65f);
                 }
-
-                if (grid[row, numCols - 1] != null)
-                {
-                    Destroy(grid[row, numCols - 1].gameObject);
-                }
-
-                board.PushRow(row, col, !pushLeft, coin);
             }
 
-            board.PrintGrid();
+            if (grid[row, numCols - 1] != null)
+            {
+                Destroy(grid[row, numCols - 1].gameObject);
+            }
+
+            board.PushRow(row, col, !pushLeft, coin);
+        }
+
+        board.PrintGrid();
     }
 
     public int FindGridRowLocation()

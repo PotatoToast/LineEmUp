@@ -413,12 +413,11 @@ public class GameManager : MonoBehaviour
 
         if (pushLeft) 
         {
-            for (int i = 1; i < col; i++)
+            for (int i = 0; i < col; i++)
             {
                 if (grid[row,i] != null && grid[row, i + 1] != null)
                 {
-                    Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i - 1].transform.position.z);
-                    grid[row, i].gameObject.transform.position = newPos;
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, -1.65f);
                 }
             }
             
@@ -433,12 +432,11 @@ public class GameManager : MonoBehaviour
         else if (!pushLeft)
         {
 
-            for (int i = numCols - 2; i > col; i--)
+            for (int i = numCols - 1; i > col; i--)
             {
                 if (grid[row, i] != null && grid[row, i - 1] != null)
                 {
-                    Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i + 1].transform.position.z);
-                    grid[row, i].gameObject.transform.position = newPos;
+                    grid[row, i].gameObject.transform.position = grid[row, i].gameObject.transform.position + new Vector3(0, 0, +1.65f);
                 }
             }
 

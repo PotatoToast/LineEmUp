@@ -93,6 +93,10 @@ public class GameManager : MonoBehaviour
     }
 
     #region For Testing
+    public Player GetCurrentPlayer(){
+        return players[currentPlayer - 1];
+    }
+
     private void TestingFunction()
     {
         //start testing

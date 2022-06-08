@@ -22,7 +22,6 @@ public class KeyboardSelector : MonoBehaviour
         Quaternion rot = selector.transform.rotation;
         tempCoin = Instantiate(selector, loc.position, rot);
     }
-    
     // Update is called once per frame
     void Update()
     {

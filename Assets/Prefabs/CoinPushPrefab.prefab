@@ -221,6 +221,7 @@ MonoBehaviour:
   yellowMaterial: {fileID: 2100000, guid: 2c7a9a080e86f244f8041385e408cfa6, type: 2}
   isSpecialCoin: 1
   isPush: 1
+  cost: 5
 --- !u!65 &2795953297443305730
 BoxCollider:
   m_ObjectHideFlags: 0

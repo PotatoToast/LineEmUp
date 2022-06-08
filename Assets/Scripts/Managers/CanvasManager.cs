@@ -5,6 +5,22 @@ using TMPro;
 
 public class CanvasManager : MonoBehaviour
 {
+    private static CanvasManager _instance;
+
+    public static CanvasManager Instance { get { return _instance; } }
+
+    public void CreateSingleton()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     [SerializeField] private TextMeshProUGUI player1Points;
     [SerializeField] private TextMeshProUGUI player2Points;
 
@@ -15,6 +31,7 @@ public class CanvasManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreateSingleton();
         winText.gameObject.SetActive(false);
     }
 

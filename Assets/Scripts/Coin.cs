@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    public enum CoinType{
+        Default,
+        Destroy,
+        Protect,
+        Push
+    };
+
     int playerNumber = 0;
 
     public bool isProtected = false;

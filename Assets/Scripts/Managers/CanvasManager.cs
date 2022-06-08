@@ -23,7 +23,7 @@ public class CanvasManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI player1Points;
     [SerializeField] private TextMeshProUGUI player2Points;
-
+    [SerializeField] private TextMeshProUGUI currentCoinText;
 
     public TextMeshProUGUI playerText;
     public TextMeshProUGUI winText;
@@ -52,6 +52,10 @@ public class CanvasManager : MonoBehaviour
                 Debug.Log("player " + playerNum + " not found");
                 break;
         }
+    }
+
+    public void UpdateCurrentCoinText(Coin.CoinType type){
+        currentCoinText.text = type.ToString();
     }
 
     public void DisplayGameResults(int playerNum)

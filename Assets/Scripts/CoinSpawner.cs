@@ -40,17 +40,19 @@ public class CoinSpawner : MonoBehaviour
                 break;
         }
         GameManager.Instance.PlaceCoin(spawnCoin, pos, colNum);
-        coinToSpawn = Coin.CoinType.Default;
+        LoadDefaultCoin();
     }
 
     public void LoadDefaultCoin(){
         coinToSpawn = Coin.CoinType.Default;
+        CanvasManager.Instance.UpdateCurrentCoinText(Coin.CoinType.Default);
     }
 
     public void LoadDestroyCoin(){
         Player currPlayer = GameManager.Instance.GetCurrentPlayer();
         if (currPlayer.abilityPoints >= destroyCoinCost){
             coinToSpawn = Coin.CoinType.Destroy;
+            CanvasManager.Instance.UpdateCurrentCoinText(Coin.CoinType.Destroy);
         }
         else{
             Debug.Log("Not enough points");
@@ -61,6 +63,7 @@ public class CoinSpawner : MonoBehaviour
         Player currPlayer = GameManager.Instance.GetCurrentPlayer();
         if (currPlayer.abilityPoints >= protectCoinCost){
             coinToSpawn = Coin.CoinType.Protect;
+            CanvasManager.Instance.UpdateCurrentCoinText(Coin.CoinType.Protect);
         }
         else{
             Debug.Log("Not enough points");
@@ -71,6 +74,7 @@ public class CoinSpawner : MonoBehaviour
         Player currPlayer = GameManager.Instance.GetCurrentPlayer();
         if (currPlayer.abilityPoints >= pushCoinCost){
             coinToSpawn = Coin.CoinType.Push;
+            CanvasManager.Instance.UpdateCurrentCoinText(Coin.CoinType.Push);
         }
         else{
             Debug.Log("Not enough points");

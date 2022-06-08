@@ -574,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 1926659472568611812, guid: 51988eb7982da9842a17f362f392af58, type: 3}
       propertyPath: coin
       value: 
-      objectReference: {fileID: 1891739987678260922, guid: c2f7d114997c80e4faf1ae31ec0f683e, type: 3}
+      objectReference: {fileID: 4267105188531811984, guid: e8e8f287e73fd644e8b7babcf517cb8d, type: 3}
     - target: {fileID: 1926659472568611813, guid: 51988eb7982da9842a17f362f392af58, type: 3}
       propertyPath: m_Name
       value: CoinSpawner
@@ -600,6 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 9
   shift: 1
+  selector: {fileID: 1623226584788459673, guid: 557070ce98d14d94f8f98aab46bcf7c0, type: 3}
   coinSpawner: {fileID: 1063241482}
   dropper: {fileID: 1063241484}
   coinSpawnerLocations:
@@ -1064,6 +1065,10 @@ PrefabInstance:
       propertyPath: columnSelector
       value: 
       objectReference: {fileID: 147714264}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: keyboardSelector
+      value: 
+      objectReference: {fileID: 1063241481}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: coinDestroyPrefab
       value: 

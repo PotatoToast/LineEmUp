@@ -380,46 +380,46 @@ public class GameManager : MonoBehaviour
     {
         var grid = board.GetGrid();
 
-        if (pushLeft) 
-        {
-            for (int i = 1; i < col; i++)
+            if (pushLeft)
             {
-                if (grid[row,i] != null && grid[row, i + 1] != null)
+                for (int i = 1; i < col; i++)
                 {
-                    Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i - 1].transform.position.z);
-                    grid[row, i].gameObject.transform.position = newPos;
+                    if (grid[row, i] != null && grid[row, i + 1] != null)
+                    {
+                        Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i - 1].transform.position.z);
+                        grid[row, i].gameObject.transform.position = newPos;
+                    }
                 }
-            }
-            
-            if (grid[row, 0] != null)
-            {
-                Destroy(grid[row, 0].gameObject);
-            }
 
-            board.PushRow(row, col, pushLeft, coin);
-        }
-
-        else if (!pushLeft)
-        {
-
-            for (int i = numCols - 2; i > col; i--)
-            {
-                if (grid[row, i] != null && grid[row, i - 1] != null)
+                if (grid[row, 0] != null)
                 {
-                    Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i + 1].transform.position.z);
-                    grid[row, i].gameObject.transform.position = newPos;
+                    Destroy(grid[row, 0].gameObject);
                 }
+
+                board.PushRow(row, col, pushLeft, coin);
             }
 
-            if (grid[row, numCols - 1] != null)
+            else if (!pushLeft)
             {
-                Destroy(grid[row, numCols - 1].gameObject);
+
+                for (int i = numCols - 2; i > col; i--)
+                {
+                    if (grid[row, i] != null && grid[row, i - 1] != null)
+                    {
+                        Vector3 newPos = new Vector3(grid[row, i].gameObject.transform.position.x, grid[row, i].gameObject.transform.position.y, columnLocations[i + 1].transform.position.z);
+                        grid[row, i].gameObject.transform.position = newPos;
+                    }
+                }
+
+                if (grid[row, numCols - 1] != null)
+                {
+                    Destroy(grid[row, numCols - 1].gameObject);
+                }
+
+                board.PushRow(row, col, !pushLeft, coin);
             }
 
-            board.PushRow(row, col, !pushLeft, coin);
-        }
-
-        board.PrintGrid();
+            board.PrintGrid();
     }
 
     public int FindGridRowLocation()

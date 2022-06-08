@@ -1,14 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private CinemachineVirtualCamera menuCamera;
+    [SerializeField] private CinemachineVirtualCamera boardCamera;
+
+    void Awake(){
+    }
+
     // Start is called before the first frame update
     public void PlayGame()
     {
         //Play Game; 
+        menuCamera.Priority = 0;
+        boardCamera.Priority = 1;
+
     }
+
+    public void ReturnToMenu(){
+        menuCamera.Priority = 1;
+        boardCamera.Priority = 0;
+    }
+    
     public void QuitGame()
     {
         Debug.Log("Quit Successful");

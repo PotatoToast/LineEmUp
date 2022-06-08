@@ -394,7 +394,6 @@ public class GameManager : MonoBehaviour
             }
 
             board.PushRow(row, col, pushLeft, coin);
-
         }
 
         else if (!pushLeft)

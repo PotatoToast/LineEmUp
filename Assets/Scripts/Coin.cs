@@ -22,7 +22,7 @@ public class Coin : MonoBehaviour
         {
             foreach (MeshRenderer item in meshrenderers)
             {
-                item.material = blueMaterial;
+                item.material = yellowMaterial;
             }
         }
         else if (playerNumber == 2)
@@ -30,7 +30,7 @@ public class Coin : MonoBehaviour
             
             foreach (MeshRenderer item in meshrenderers)
             {
-                item.material = yellowMaterial;
+                item.material = blueMaterial;
             }
         }
     }

@@ -271,21 +271,51 @@ public class Board
     {
         //PlaceCoinInCol(col, coin);
 
+        //Find empty or protected coin, then stop there
+        int endingCol = -1;
+
         if (!left)
         {
-            int upperBound = 9;
-            for (int horizontalPos = col; horizontalPos < 9; horizontalPos++)
+            endingCol = numCols - 1;
+            for (int horizontalPos = col; horizontalPos < numCols; horizontalPos++)
             {
-                if (grid[row, horizontalPos] == null) continue;
-                if (grid[row, horizontalPos].isProtected)
+                if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
                 {
-                    upperBound = horizontalPos;
                     grid[row, horizontalPos].isProtected = false;
+                    endingCol = horizontalPos - 1;
+                    break;
+                }
+
+                if (grid[row, horizontalPos] == null)
+                {
+                    endingCol = horizontalPos;
+                    break;
+                }    
+            }
+        }
+        else
+        {
+            endingCol = 0;
+            for (int horizontalPos = col; horizontalPos >= 0; horizontalPos--)
+            {
+                if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
+                {
+                    grid[row, horizontalPos].isProtected = false;
+                    endingCol = horizontalPos + 1;
+                    break;
+                }
+
+                if (grid[row, horizontalPos] == null)
+                {
+                    endingCol = horizontalPos;
                     break;
                 }
             }
+        }
 
-            for (int horizontalPos = upperBound - 1; horizontalPos > col; horizontalPos--)
+        if (!left)
+        {
+            for (int horizontalPos = endingCol; horizontalPos > col; horizontalPos--)
             {
                 if (horizontalPos == col + 1)
                 {
@@ -300,20 +330,7 @@ public class Board
         }
         else
         {
-            int lowerBound = -1;
-            for (int horizontalPos = col; horizontalPos >= 0; horizontalPos--)
-            {
-                if (grid[row, horizontalPos] == null) continue;
-                if (grid[row, horizontalPos].isProtected)
-                {
-                    lowerBound = horizontalPos;
-                    grid[row, horizontalPos].isProtected = false;
-                }
-                break;
-                
-            }
-
-            for (int horizontalPos = lowerBound + 1; horizontalPos < col; horizontalPos++)
+            for (int horizontalPos = endingCol; horizontalPos < col; horizontalPos++)
             {
                 if (horizontalPos == col - 1)
                 {

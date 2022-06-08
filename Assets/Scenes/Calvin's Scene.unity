@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1043,7 +1043,7 @@ PrefabInstance:
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: coinPrefab
       value: 
-      objectReference: {fileID: 4267105188531811984, guid: a81891013888bc743ad45b4308a64948, type: 3}
+      objectReference: {fileID: 4267105188531811984, guid: e8e8f287e73fd644e8b7babcf517cb8d, type: 3}
     - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: playerText
       value: 
@@ -1084,6 +1084,46 @@ PrefabInstance:
       propertyPath: players.Array.data[1]
       value: 
       objectReference: {fileID: 1642378398}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[0]
+      value: 
+      objectReference: {fileID: 3986724815624436819}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[1]
+      value: 
+      objectReference: {fileID: 3986724815795967152}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[2]
+      value: 
+      objectReference: {fileID: 3986724814850741967}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[3]
+      value: 
+      objectReference: {fileID: 3986724815888549272}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[4]
+      value: 
+      objectReference: {fileID: 3986724816043300967}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[5]
+      value: 
+      objectReference: {fileID: 3986724814215930524}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[6]
+      value: 
+      objectReference: {fileID: 3986724814190962802}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[7]
+      value: 
+      objectReference: {fileID: 3986724815236213722}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[8]
+      value: 
+      objectReference: {fileID: 3986724814401192487}
     - target: {fileID: 1159660689463859324, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1152,7 +1192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2090213343
 RectTransform:
   m_ObjectHideFlags: 0

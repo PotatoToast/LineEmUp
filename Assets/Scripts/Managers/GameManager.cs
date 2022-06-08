@@ -45,6 +45,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject DestroyCoinPSEffect;
 
+
+    #region StateMachine Stuff
+    private enum State
+    {
+        Wait, PlaceCoin, ChooseDirection, IdleForAnim
+    }
+
+    private State currState = State.Wait;
+
+    #endregion
+
     GameObject recentCoin;
     Coin newCoin;
     bool canSelect = false;
@@ -70,8 +81,6 @@ public class GameManager : MonoBehaviour
 
         if (recentCoin != null && recentCoin.GetComponent<Coin>().isSpecialCoin && recentCoin.GetComponent<Rigidbody>().velocity.y > -0.05 && canSelect)
         {
-            
-
             /*
             columnSelector.transform.GetChild(0).gameObject.SetActive(false);
             columnSelector.transform.GetChild(1).gameObject.SetActive(false);
@@ -79,9 +88,9 @@ public class GameManager : MonoBehaviour
             */
 
             //move column selector ui and only show available buttons
-            columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
+            //columnSelector.transform.position = new Vector3(1, newCoin.transform.position.y,newCoin.transform.position.z);
 
-            if(FindGridColLocation() > 0 && grid[FindGridRowLocation(),FindGridColLocation() - 1] != null)
+            if (FindGridColLocation() > 0 && grid[FindGridRowLocation(), FindGridColLocation() - 1] != null)
             {
                 recentCoin.transform.GetChild(8).GetChild(0).gameObject.SetActive(true);
                 //columnSelector.transform.GetChild(0).gameObject.SetActive(true);
@@ -99,7 +108,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if(Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             DestroyCoin(4, 0);
         }
@@ -108,7 +117,7 @@ public class GameManager : MonoBehaviour
     private void TestingFunction()
     {
         //start testing
-        
+
         Coin[,] grid = board.GetGrid();
         int playerNumber = 1;
         int otherNumber = 2;
@@ -158,6 +167,26 @@ public class GameManager : MonoBehaviour
         board.PrintGrid();
         //end testing
     }
+
+
+    void DoStateMachine()
+    {
+        switch (currState)
+        {
+            case State.Wait:
+                break;
+            case State.PlaceCoin:
+                break;
+            case State.ChooseDirection:
+                break;
+            case State.IdleForAnim:
+                break;
+            default:
+                break;
+        }
+    }
+
+
     private void PrintBoard(){
         Coin[,] grid = board.GetGrid();
         for (int row = 0; row < grid.GetLength(0); row++)
@@ -212,9 +241,6 @@ public class GameManager : MonoBehaviour
             newCoin.ChangePlayerNumber(currentPlayer);
 
             recentCoin.GetComponent<Rigidbody>().velocity = new Vector3(0, -1, 0);
-
-
-
 
             //Creates backend version
             board.PlaceCoinInCol(colNum, newCoin);

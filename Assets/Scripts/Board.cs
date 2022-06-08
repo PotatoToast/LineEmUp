@@ -313,6 +313,7 @@ public class Board
             }
         }
 
+        //
         if (!left)
         {
             for (int horizontalPos = endingCol; horizontalPos > col; horizontalPos--)

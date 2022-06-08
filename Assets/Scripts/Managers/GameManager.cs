@@ -414,6 +414,8 @@ public class GameManager : MonoBehaviour
 
             board.PushRow(row, col, !pushLeft, coin);
         }
+
+        board.PrintGrid();
     }
 
     public int FindGridRowLocation()

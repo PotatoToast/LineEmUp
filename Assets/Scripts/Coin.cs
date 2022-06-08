@@ -42,19 +42,19 @@ public class Coin : MonoBehaviour
 
     public void ButtonDestroyCoinUI(int input)
     {
-        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        GameManager gm = GameManager.Instance;
         gm.ButtonDestroyCoin(input);
     }
 
     public void ButtonProtectCoinUI(int input)
     {
-        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        GameManager gm = GameManager.Instance;
         gm.ButtonProtectCoin(input);
     }
 
     public void ButtonPushCoinUI(int input)
     {
-        GameManager gm = GameObject.Find("GameManager (1)").GetComponent<GameManager>();
+        GameManager gm = GameManager.Instance;
         gm.ButtonPushCoin(input);
     }
 }

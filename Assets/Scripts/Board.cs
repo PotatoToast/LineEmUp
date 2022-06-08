@@ -263,13 +263,13 @@ public class Board
     /// <summary>
     /// Pushs the row specified.
     /// </summary>
-    /// Last updated : 4/17/2022
+    /// Last updated : 6/7/2022
     /// Last tested : 4/17/2022
     /// Question? Ask (recent updater) : Calvin
     /// Functions correctly? : Some simple cases worked. Probably needs more testing
     public void PushRow(int row, int col, bool left, Coin coin)
     {
-        PlaceCoinInCol(col, coin);
+        //PlaceCoinInCol(col, coin);
 
         if (!left)
         {

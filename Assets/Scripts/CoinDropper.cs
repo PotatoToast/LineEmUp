@@ -9,7 +9,8 @@ public class CoinDropper : MonoBehaviour
     public float deltaY;    // Distance between each row
     public Vector3 startPos;// Coin position at top left of board
 
-    public void InitializePositions(){
+    public void InitializePositions()
+    {
         int numRows = GameManager.Instance.numRows;
         int numCols = GameManager.Instance.numCols;
 
@@ -19,8 +20,10 @@ public class CoinDropper : MonoBehaviour
         float zPos = startPos.z;
         Vector3 newPos;
 
-        for (int i=0; i < numRows; i++){
-            for (int j=0; j < numCols; j++){
+        for (int i=0; i < numRows; i++)
+        {
+            for (int j=0; j < numCols; j++)
+            {
                 newPos = new Vector3(xPos + (deltaX * j), yPos - (deltaY * i), zPos);
                 coinPositions[i, j] = newPos;
             }

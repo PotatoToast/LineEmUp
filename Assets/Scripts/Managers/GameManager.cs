@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         switch (currState)
         {
             case State.Wait:
-                keyboardSelector.CheckForInput();
+                keyboardSelector.CheckForPlace();
                 if (isPlacingCoin)
                 {
                     currState = State.PlaceCoin;

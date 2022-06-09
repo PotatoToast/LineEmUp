@@ -20,27 +20,22 @@ public class KeyboardSelector : MonoBehaviour
         dropper.InitializePositions();   
         var loc = coinSpawnerLocations[spawnColNumber].transform;
         Quaternion rot = selector.transform.rotation;
-        tempCoin = Instantiate(selector, loc.position, rot);
+        selector = Instantiate(selector, loc.position, rot);
     }
     // Update is called once per frame
     void Update()
     {
-        
+        MoveSelector(); 
     }
 
-    public void CheckForInput()
+    public void MoveSelector()
     {
         if ((Input.GetKeyDown("a") || Input.GetKeyDown("left")) && spawnColNumber > 0)
         {
             //transform.position += new Vector3(-shift, 0, 0);
             spawnColNumber -= 1;
             var loc = coinSpawnerLocations[spawnColNumber].transform;
-            if (tempCoin != null)
-            {
-                Destroy(tempCoin);
-            }
-            Quaternion rot = selector.transform.rotation;
-            tempCoin = Instantiate(selector, loc.position, rot);
+            selector.transform.position = loc.position;
             Debug.Log("Spawner Left");
         }
         //if a or left arrow move selector left
@@ -50,16 +45,13 @@ public class KeyboardSelector : MonoBehaviour
             //transform.position += new Vector3(shift, 0, 0);
             spawnColNumber += 1;
             var loc = coinSpawnerLocations[spawnColNumber].transform;
-            if (tempCoin != null)
-            {
-                Destroy(tempCoin);
-            }
-            Quaternion rot = selector.transform.rotation;
-            tempCoin = Instantiate(selector, loc.position, rot);
+            selector.transform.position = loc.position;
             Debug.Log("Spawner Right");
         }
         //if d or right arrow move right
-
+    }
+    public void CheckForPlace()
+    {
         if (Input.GetKeyDown("s") || Input.GetKeyDown("down") || Input.GetKeyDown("enter"))
         {
             //Here is where the coin span function goes

@@ -12,9 +12,8 @@ public class CoinSpawner : MonoBehaviour
     public int destroyCoinCost;
     public int protectCoinCost;
     public int pushCoinCost;
-
+    
     private Coin.CoinType coinToSpawn;
-
     public void PlaceCoin(Vector3 pos, int colNum)
     {
         Player currPlayer = GameManager.Instance.GetCurrentPlayer();

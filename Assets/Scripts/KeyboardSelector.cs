@@ -6,14 +6,14 @@ public class KeyboardSelector : MonoBehaviour
 {
     public int range; // half width of board
     public float shift = 3f; // how far over the selector moves
-    public GameObject selector;
+    public Coin selector;
     public CoinSpawner coinSpawner;
     public CoinDropper dropper;
 
     [SerializeField] private List<GameObject> coinSpawnerLocations;
     private int spawnColNumber = 0;
 
-    private GameObject tempCoin; 
+    private Coin tempCoin; 
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,7 @@ public class KeyboardSelector : MonoBehaviour
         var loc = coinSpawnerLocations[spawnColNumber].transform;
         Quaternion rot = selector.transform.rotation;
         selector = Instantiate(selector, loc.position, rot);
+        selector.ChangePlayerNumber(GameManager.Instance.currentPlayer);
     }
     // Update is called once per frame
     void Update()
@@ -57,6 +58,7 @@ public class KeyboardSelector : MonoBehaviour
             //Here is where the coin span function goes
             var loc = coinSpawnerLocations[spawnColNumber].transform;
             coinSpawner.PlaceCoin(loc.position, spawnColNumber);
+            selector.ChangePlayerNumber((GameManager.Instance.currentPlayer % 2) + 1);  // Gets oppposing player
             //return;
         }
     }

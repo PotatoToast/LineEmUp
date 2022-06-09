@@ -10,8 +10,7 @@ public class Coin : MonoBehaviour
         Protect,
         Push
     };
-
-    int playerNumber = 0;
+    public int playerNumber = 0;
 
     public bool isProtected = false;
     public Material blueMaterial;

@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 4267105188531811984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.28, y: 11.54, z: 0}
-  m_LocalScale: {x: 0.035, y: 0.035, z: 0.035}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 2.8}
   m_Children:
   - {fileID: 1862609862193576027}
   - {fileID: 7767603061595312624}
@@ -216,12 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a860c88f54e4044997d0f6a363ac3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
   isProtected: 0
   blueMaterial: {fileID: 2100000, guid: 7e8fb03797d21d64585b38a417c02c5c, type: 2}
   yellowMaterial: {fileID: 2100000, guid: 2c7a9a080e86f244f8041385e408cfa6, type: 2}
   isSpecialCoin: 1
   isPush: 0
+  cost: 3
 --- !u!65 &2795953297443305730
 BoxCollider:
   m_ObjectHideFlags: 0

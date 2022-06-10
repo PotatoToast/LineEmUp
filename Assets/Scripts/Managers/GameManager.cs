@@ -290,6 +290,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("Invalid action");
+            return;
             //Play invalid action noise here
         }
 

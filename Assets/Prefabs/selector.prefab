@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2147385061639010851}
+  - component: {fileID: -6571393627905467835}
   m_Layer: 0
   m_Name: selector
   m_TagString: Untagged
@@ -23,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623226584788459673}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.4755487, y: 14.285159, z: 3.173796}
   m_LocalScale: {x: 0.35, y: 0.35, z: 2.8}
   m_Children:
@@ -37,7 +38,24 @@ Transform:
   - {fileID: 194478571690871292}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &-6571393627905467835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623226584788459673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a860c88f54e4044997d0f6a363ac3d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isProtected: 0
+  blueMaterial: {fileID: 2100000, guid: 7e8fb03797d21d64585b38a417c02c5c, type: 2}
+  yellowMaterial: {fileID: 2100000, guid: 2c7a9a080e86f244f8041385e408cfa6, type: 2}
+  isSpecialCoin: 0
+  isPush: 0
 --- !u!1 &2953967395893367752
 GameObject:
   m_ObjectHideFlags: 0

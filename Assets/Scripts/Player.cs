@@ -10,4 +10,9 @@ public class Player : MonoBehaviour
 
     public GameObject coinPrefab;
 
+    public void IncreaseAbilityPoints(int increase){
+        abilityPoints += increase;
+        CanvasManager.Instance.UpdatePlayerAbilityPoints(playerNumber, abilityPoints);
+    }
+
 }

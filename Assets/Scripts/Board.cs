@@ -313,17 +313,32 @@ public class Board
             }
         }
 
-        //
+        List<Vector3> columnPositions = GameManager.Instance.GetColumnLocations();
+        //Start moving the coins
         if (!left)
         {
             for (int horizontalPos = endingCol; horizontalPos > col; horizontalPos--)
             {
                 if (horizontalPos == col + 1)
                 {
+                    //Coin tempCoin = grid[row, horizontalPos];
                     grid[row, horizontalPos] = null;
+                    //Object.Destroy(tempCoin.gameObject);
                 }
                 else
                 {
+                    GameObject go1 = grid[row, horizontalPos].gameObject;
+                    GameObject go2 = grid[row, horizontalPos - 1].gameObject;
+
+                    Vector3 newPos = new Vector3(go1.transform.position.x, go1.transform.position.y, columnPositions[horizontalPos].z);
+
+                    go2.transform.position = newPos;
+
+                    if (horizontalPos == endingCol)
+                    {
+                        Object.Destroy(go1);
+                    }
+
                     grid[row, horizontalPos] = grid[row, horizontalPos - 1];
                 }
                 SettleColumn(horizontalPos);
@@ -335,10 +350,24 @@ public class Board
             {
                 if (horizontalPos == col - 1)
                 {
+                    //Coin tempCoin = grid[row, horizontalPos];
                     grid[row, horizontalPos] = null;
+                    //Object.Destroy(tempCoin.gameObject);
                 }
                 else
                 {
+                    GameObject go1 = grid[row, horizontalPos].gameObject;
+                    GameObject go2 = grid[row, horizontalPos + 1].gameObject;
+
+                    Vector3 newPos = new Vector3(go1.transform.position.x, go1.transform.position.y, columnPositions[horizontalPos].z);
+
+                    go2.transform.position = newPos;
+
+                    if (horizontalPos == endingCol)
+                    {
+                        Object.Destroy(go1);
+                    }
+
                     grid[row, horizontalPos] = grid[row, horizontalPos + 1];
                 }
                 SettleColumn(horizontalPos);

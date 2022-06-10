@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 6992827283211909202}
   - component: {fileID: 2795953297443305730}
   - component: {fileID: 2861948806976533463}
+  - component: {fileID: -5504914354508490466}
   m_Layer: 0
   m_Name: CoinDestroyPrefab
   m_TagString: Untagged
@@ -251,6 +252,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &-5504914354508490466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267105188531811984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0464474e86553148a8e5ebc28f410f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityForce: 10
+  rb: {fileID: 2861948806976533463}
 --- !u!1 &6283743742030113785
 GameObject:
   m_ObjectHideFlags: 0

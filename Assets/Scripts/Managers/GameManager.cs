@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> columnLocationsGO;
     [SerializeField] private KeyboardSelector keyboardSelector;
+    [SerializeField] private AudioSource fallSFX;
+
 
     [HideInInspector] public List<Vector3> columnLocations;
 
@@ -204,6 +206,7 @@ public class GameManager : MonoBehaviour
                         }
                         else
                         {
+                            fallSFX.Play();
                             currState = State.SwitchTurn;
                         }
                     }

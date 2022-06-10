@@ -267,6 +267,7 @@ public class Board
     /// Last tested : 4/17/2022
     /// Question? Ask (recent updater) : Calvin
     /// Functions correctly? : Some simple cases worked. Probably needs more testing
+    /// Doesn't work when the set-up is {protected, coin,<- pusher}
     public void PushRow(int row, int col, bool left, Coin coin)
     {
         //PlaceCoinInCol(col, coin);
@@ -327,16 +328,18 @@ public class Board
                 }
                 else
                 {
-                    GameObject go1 = grid[row, horizontalPos].gameObject;
                     GameObject go2 = grid[row, horizontalPos - 1].gameObject;
 
-                    Vector3 newPos = new Vector3(go1.transform.position.x, go1.transform.position.y, columnPositions[horizontalPos].z);
+                    Vector3 newPos = new Vector3(go2.transform.position.x, go2.transform.position.y, columnPositions[horizontalPos].z);
 
                     go2.transform.position = newPos;
 
                     if (horizontalPos == endingCol)
                     {
-                        Object.Destroy(go1);
+                        if (grid[row, horizontalPos] != null)
+                        {
+                            Object.Destroy(grid[row, horizontalPos].gameObject);
+                        }
                     }
 
                     grid[row, horizontalPos] = grid[row, horizontalPos - 1];
@@ -356,16 +359,18 @@ public class Board
                 }
                 else
                 {
-                    GameObject go1 = grid[row, horizontalPos].gameObject;
                     GameObject go2 = grid[row, horizontalPos + 1].gameObject;
 
-                    Vector3 newPos = new Vector3(go1.transform.position.x, go1.transform.position.y, columnPositions[horizontalPos].z);
+                    Vector3 newPos = new Vector3(go2.transform.position.x, go2.transform.position.y, columnPositions[horizontalPos].z);
 
                     go2.transform.position = newPos;
 
                     if (horizontalPos == endingCol)
                     {
-                        Object.Destroy(go1);
+                        if (grid[row, horizontalPos] != null)
+                        {
+                            Object.Destroy(grid[row, horizontalPos].gameObject);
+                        }
                     }
 
                     grid[row, horizontalPos] = grid[row, horizontalPos + 1];

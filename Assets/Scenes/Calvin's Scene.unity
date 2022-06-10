@@ -1089,6 +1089,46 @@ PrefabInstance:
       propertyPath: players.Array.data[1]
       value: 
       objectReference: {fileID: 1642378398}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[0]
+      value: 
+      objectReference: {fileID: 3986724815624436819}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[1]
+      value: 
+      objectReference: {fileID: 3986724815795967152}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[2]
+      value: 
+      objectReference: {fileID: 3986724814850741967}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[3]
+      value: 
+      objectReference: {fileID: 3986724815888549272}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[4]
+      value: 
+      objectReference: {fileID: 3986724816043300967}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[5]
+      value: 
+      objectReference: {fileID: 3986724814215930524}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[6]
+      value: 
+      objectReference: {fileID: 3986724814190962802}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[7]
+      value: 
+      objectReference: {fileID: 3986724815236213722}
+    - target: {fileID: 1159660689463859315, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: columnLocations.Array.data[8]
+      value: 
+      objectReference: {fileID: 3986724814401192487}
     - target: {fileID: 1159660689463859324, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
       propertyPath: m_RootOrder
       value: 4

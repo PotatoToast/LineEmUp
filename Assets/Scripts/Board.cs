@@ -321,6 +321,7 @@ public class Board
                 if (horizontalPos == col + 1)
                 {
                     grid[row, horizontalPos] = null;
+
                 }
                 else
                 {

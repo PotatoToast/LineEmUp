@@ -85,8 +85,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckState();
-
-       
     }
 
     #region For Testing

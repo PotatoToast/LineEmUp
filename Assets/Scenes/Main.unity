@@ -2993,6 +2993,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135844606105958946, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606105958946, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e9a1d2ea8b61fdc4cb989eced00f5112, type: 3}
     - target: {fileID: 3135844606105958947, guid: 492c2e1911ee710498641199902ef10a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3001,6 +3009,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadProtectCoin
       objectReference: {fileID: 0}
+    - target: {fileID: 3135844606609421010, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606609421010, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e9a1d2ea8b61fdc4cb989eced00f5112, type: 3}
     - target: {fileID: 3135844606609421011, guid: 492c2e1911ee710498641199902ef10a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -3025,6 +3041,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadPushCoin
       objectReference: {fileID: 0}
+    - target: {fileID: 3135844607244573737, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844607244573737, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e9a1d2ea8b61fdc4cb989eced00f5112, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492c2e1911ee710498641199902ef10a, type: 3}
 --- !u!1 &1327085584

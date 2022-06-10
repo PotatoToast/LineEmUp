@@ -257,7 +257,7 @@ public class Board
 
     public void ProtectAdjacent(int row, int col)
     {
-        grid[row, col].isProtected = true;
+        grid[row, col].ProtectCoin();
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ public class Board
             {
                 if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
                 {
-                    grid[row, horizontalPos].isProtected = false;
+                    grid[row, horizontalPos].RemoveProtection();
                     endingCol = horizontalPos - 1;
                     break;
                 }
@@ -301,7 +301,7 @@ public class Board
             {
                 if (grid[row, horizontalPos] != null && grid[row, horizontalPos].isProtected)
                 {
-                    grid[row, horizontalPos].isProtected = false;
+                    grid[row, horizontalPos].RemoveProtection();
                     endingCol = horizontalPos + 1;
                     break;
                 }

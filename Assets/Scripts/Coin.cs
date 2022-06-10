@@ -15,9 +15,23 @@ public class Coin : MonoBehaviour
     public bool isProtected = false;
     public Material blueMaterial;
     public Material yellowMaterial;
+    public GameObject protectedIceCubeDisplay;
 
     public bool isSpecialCoin;
     public bool isPush;
+
+    public void ProtectCoin()
+    {
+        isProtected = true;
+        protectedIceCubeDisplay.SetActive(true);
+    }
+
+    public void RemoveProtection()
+    {
+        isProtected = false;
+        protectedIceCubeDisplay.SetActive(false);
+    }
+
 
     public void ChangePlayerNumber(int _playerNumber)
     {

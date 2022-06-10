@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
                 //Add coin component
                 var tempCoin = tempObj.AddComponent<Coin>();
                 tempCoin.ChangePlayerNumber(playerNumber);
-                tempCoin.isProtected = true;
+                tempCoin.ProtectCoin();
 
                 //logic for player switching
                 (playerNumber, otherNumber) = (otherNumber, playerNumber);
@@ -443,7 +443,7 @@ public class GameManager : MonoBehaviour
         //check to see if the targeted coin is protected
         if (grid[row, col].isProtected)
         {
-            grid[row, col].isProtected = false;
+            grid[row, col].RemoveProtection();
             Destroy(psEffect, 3f);
             return;
         }

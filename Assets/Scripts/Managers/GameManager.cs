@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
     [Header("ParticleEffects")]
     [SerializeField] private GameObject DestroyCoinPSEffect;
 
+    [SerializeField] private List<GameObject> columnLocations;
     [SerializeField] private KeyboardSelector keyboardSelector;
 
     #region StateMachine Stuff
@@ -78,6 +79,8 @@ public class GameManager : MonoBehaviour
     {
         board = new Board(numRows, numCols);
         board.PrintGrid();
+        canvasManager.UpdatePlayerAbilityPoints(1, 0);
+        canvasManager.UpdatePlayerAbilityPoints(2, 0);
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
     }
 
@@ -88,6 +91,10 @@ public class GameManager : MonoBehaviour
     }
 
     #region For Testing
+    public Player GetCurrentPlayer(){
+        return players[currentPlayer - 1];
+    }
+
     private void TestingFunction()
     {
         //start testing
@@ -148,7 +155,7 @@ public class GameManager : MonoBehaviour
         switch (currState)
         {
             case State.Wait:
-                keyboardSelector.CheckForInput();
+                keyboardSelector.CheckForPlace();
                 if (isPlacingCoin)
                 {
                     currState = State.PlaceCoin;
@@ -248,6 +255,10 @@ public class GameManager : MonoBehaviour
             currentPlayer = 1;
         }
 
+        Player nextPlayer = players[currentPlayer - 1];
+        nextPlayer.IncreaseAbilityPoints(1);
+
+        canvasManager.UpdatePlayerAbilityPoints(currentPlayer, nextPlayer.abilityPoints);
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
         CheckIfEitherPlayerWin();
     }

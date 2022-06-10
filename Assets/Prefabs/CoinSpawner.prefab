@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 603470086474198148, guid: a2af260912de437478947fc46f516b0f, type: 3}
+  destroyCoin: {fileID: 4267105188531811984, guid: bf1242ab6e5a0bb43a795952ec35c195, type: 3}
+  protectCoin: {fileID: 4267105188531811984, guid: 052e96e027da68d439d8694004333f76, type: 3}
+  moveRowCoin: {fileID: 4267105188531811984, guid: a81891013888bc743ad45b4308a64948, type: 3}
+  destroyCoinCost: 3
+  protectCoinCost: 3
+  pushCoinCost: 5

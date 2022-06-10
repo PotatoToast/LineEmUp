@@ -2014,6 +2014,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7096051014640286863, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: abilityPoints
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142038928573805238, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
+      propertyPath: abilityPoints
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7255825e304fb54a96e45e0783d5bac, type: 3}
 --- !u!1 &901044818 stripped
@@ -2892,6 +2900,38 @@ PrefabInstance:
     - target: {fileID: 3135844605978793193, guid: 492c2e1911ee710498641199902ef10a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606105958947, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1839110507}
+    - target: {fileID: 3135844606105958947, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadProtectCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606609421011, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606609421011, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1839110507}
+    - target: {fileID: 3135844606609421011, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadDestroyCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844606609421011, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: CoinSpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135844607244573734, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1839110507}
+    - target: {fileID: 3135844607244573734, guid: 492c2e1911ee710498641199902ef10a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadPushCoin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 492c2e1911ee710498641199902ef10a, type: 3}

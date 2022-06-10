@@ -274,7 +274,7 @@ public class GameManager : MonoBehaviour
         if (board.canPlaceInColumn(colNum))
         {
             //Creates physical version of coin
-            recentCoin = Instantiate(temp, pos, Quaternion.Euler(0, -90, 0));
+            recentCoin = Instantiate(temp, pos, Quaternion.Euler(0, 90, 0));
             newCoin = recentCoin.GetComponent<Coin>();
             newCoin.ChangePlayerNumber(currentPlayer);
 
@@ -423,7 +423,7 @@ public class GameManager : MonoBehaviour
         var grid = board.GetGrid();
         Coin myCoin = grid[row, col];
         GameObject coinObj = myCoin.gameObject;
-        GameObject psEffect = Instantiate(DestroyCoinPSEffect, coinObj.transform.position, Quaternion.Euler(0, 0, -60));
+        GameObject psEffect = Instantiate(DestroyCoinPSEffect, coinObj.transform.position, Quaternion.Euler(0, 0, 60));
 
 
         //check to see if the targeted coin is protected

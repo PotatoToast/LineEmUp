@@ -313,15 +313,16 @@ public class Board
             }
         }
 
-        //
+        //Start moving the coins
         if (!left)
         {
             for (int horizontalPos = endingCol; horizontalPos > col; horizontalPos--)
             {
                 if (horizontalPos == col + 1)
                 {
+                    Coin tempCoin = grid[row, horizontalPos];
                     grid[row, horizontalPos] = null;
-
+                    Destroy(tempCoin.gameObject);
                 }
                 else
                 {

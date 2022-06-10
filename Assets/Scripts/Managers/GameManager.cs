@@ -39,15 +39,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject coinMaster;
 
-    public GameObject columnSelector;
-
     [SerializeField] private CanvasManager canvasManager;
 
     [Header("ParticleEffects")]
     [SerializeField] private GameObject DestroyCoinPSEffect;
 
-    [SerializeField] private List<GameObject> columnLocations;
+    [SerializeField] private List<GameObject> columnLocationsGO;
     [SerializeField] private KeyboardSelector keyboardSelector;
+
+    [HideInInspector] public List<Vector3> columnLocations;
 
     #region StateMachine Stuff
     public enum State
@@ -79,9 +79,15 @@ public class GameManager : MonoBehaviour
     {
         board = new Board(numRows, numCols);
         board.PrintGrid();
+
         canvasManager.UpdatePlayerAbilityPoints(1, 0);
         canvasManager.UpdatePlayerAbilityPoints(2, 0);
         canvasManager.UpdateCurrentPlayerText(currentPlayer);
+
+        foreach (var x in columnLocationsGO)
+        {
+            columnLocations.Add(x.transform.position);
+        }
     }
 
     // Update is called once per frame
@@ -89,6 +95,14 @@ public class GameManager : MonoBehaviour
     {
         CheckState();
     }
+
+    #region Getters/Setters
+    public List<Vector3> GetColumnLocations()
+    {
+        return columnLocations;
+    }
+    #endregion
+
 
     #region For Testing
     public Player GetCurrentPlayer(){
@@ -453,6 +467,9 @@ public class GameManager : MonoBehaviour
     {
         var grid = board.GetGrid();
 
+        board.PushRow(row, col, pushLeft, coin);
+
+        /*
         if (pushLeft) 
         {
             for (int i = 0; i < col; i++)
@@ -489,6 +506,7 @@ public class GameManager : MonoBehaviour
 
             board.PushRow(row, col, !pushLeft, coin);
         }
+        */
 
         board.PrintGrid();
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject coinMaster;
 
+    public bool isEndGame = false;
+
     [SerializeField] private CanvasManager canvasManager;
 
     [Header("ParticleEffects")]
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour
     #region StateMachine Stuff
     public enum State
     {
-        Wait, PlaceCoin, ChooseDirection, IdleForAnim, SwitchTurn
+        Wait, PlaceCoin, ChooseDirection, IdleForAnim, SwitchTurn, EndGame
     }
 
     public State currState = State.Wait;
@@ -95,7 +98,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckState();
+        if(!isEndGame)
+        {
+            CheckState();
+        }
+        else
+        {
+            if(currState != State.EndGame)
+            {
+                currState = State.EndGame;
+            }
+            CheckRestart();
+        }
     }
 
     #region Getters/Setters
@@ -241,8 +255,19 @@ public class GameManager : MonoBehaviour
                 SwitchPlayer();
                 currState = State.Wait;
                 break;
+            case State.EndGame:
+                CheckRestart();
+                break;
             default:
                 break;
+        }
+    }
+
+    private void CheckRestart()
+    {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -344,14 +369,17 @@ public class GameManager : MonoBehaviour
 
         if (playerOneWins && playerTwoWins)
         {
+            isEndGame = true;
             canvasManager.DisplayGameResults(-1);
         }
         else if (playerOneWins)
         {
+            isEndGame = true;
             canvasManager.DisplayGameResults(1);
         }
         else if(playerTwoWins)
         {
+            isEndGame = true;
             canvasManager.DisplayGameResults(2);
         }
     }   

@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 2861948806976533463}
   - component: {fileID: 222927242385459817}
   - component: {fileID: -6269658021470679312}
+  - component: {fileID: 6163100641985000703}
   m_Layer: 0
   m_Name: CoinMasterPrefab
   m_TagString: Untagged
@@ -268,7 +269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityForce: 10
   rb: {fileID: 2861948806976533463}
-  fallSFX: {fileID: -6269658021470679312}
 --- !u!82 &-6269658021470679312
 AudioSource:
   m_ObjectHideFlags: 0
@@ -365,6 +365,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6163100641985000703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4267105188531811984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &6283743742030113785
 GameObject:
   m_ObjectHideFlags: 0

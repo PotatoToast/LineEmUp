@@ -175,7 +175,6 @@ GameObject:
   - component: {fileID: 2795953297443305730}
   - component: {fileID: 2861948806976533463}
   - component: {fileID: -4087595524568337904}
-  - component: {fileID: -8389059914768675630}
   m_Layer: 0
   m_Name: CoinProtectPrefab
   m_TagString: Untagged
@@ -269,22 +268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityForce: 10
   rb: {fileID: 2861948806976533463}
---- !u!114 &-8389059914768675630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4267105188531811984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!1 &6283743742030113785
 GameObject:
   m_ObjectHideFlags: 0
